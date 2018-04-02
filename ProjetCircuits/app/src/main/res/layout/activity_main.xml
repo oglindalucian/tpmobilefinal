@@ -24,15 +24,7 @@
             android:layout_marginLeft="30dp"
             />
 
-        <Button
-            android:id="@+id/bouton_modifier"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="MODIFIER CIRCUIT"
-            android:background="#00F"
-            android:onClick="ajouterCircuit"
-            android:layout_marginLeft="70dp"
-            />
+
 
     </LinearLayout>
 
@@ -52,6 +44,8 @@
 
 
     </LinearLayout>
+
+
 
 </RelativeLayout>
 

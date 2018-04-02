@@ -1,11 +1,16 @@
 package lucian.example.com.projetcircuits;import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import lucian.example.com.projetcircuits.Data.CircuitContrat;
 import lucian.example.com.projetcircuits.Model.Circuit;
@@ -24,10 +29,12 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
     public interface OnItemClickListener {   //definir une interface
         void onItemClick(Circuit item);
     }  */
-
+    public static final int TEXT_REQUEST = 2;
     private Context mContext;
     private Cursor mCursor;
-  //  private final List<Circuit> circuits;
+  //  private List<Circuit> circuits;
+  //  private ArrayList<String> nomsEtape;
+  //  private ArrayAdapter<String> etapesAdapter;
    // private final OnItemClickListener listener; //declarer une variable de type interface
 
     /**
@@ -38,6 +45,8 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
     public CircuitAdapter(Context context, Cursor cursor) { //, List<Circuit> circuits, OnItemClickListener listener
         this.mContext = context;
         this.mCursor = cursor;
+       // nomsEtape = new ArrayList<String>();//
+      //  remplirListeEtapes();//
     }
 
 
@@ -81,8 +90,23 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
         holder.prixCircuit.setText(String.valueOf(prix));
         holder.guide.setText(guide);
         holder.transport.setText(transport);
+/*
+        remplirListeEtapes();
+        etapesAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1, nomsEtape);
+        viderListeEtapes();
+        holder.listeEtapes.setAdapter(etapesAdapter);
+
+        */
+
         long id = mCursor.getLong(mCursor.getColumnIndex(CircuitContrat.Circuit._ID));
         holder.itemView.setTag(id);
+
+        holder.setItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Toast.makeText(mContext, "Le holder no:", Toast.LENGTH_LONG).show();
+            }
+        });
 
      //   holder.bind(circuits.get(position), listener);    //ajouter le bind sur le holder
     }
@@ -99,15 +123,25 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
         if(newCursor!=null)
             this.notifyDataSetChanged();
     }
+/*
+    public void remplirListeEtapes() {
+        nomsEtape.add("Etape1");
+        nomsEtape.add("Etape2");
+        nomsEtape.add("Etape3");
+    }
 
-
+    public void viderListeEtapes() {
+        nomsEtape.clear();
+    }
+*/
     /**
      * Classe interne permettant de retenir (hold) la vue à afficher dans un élément de la liste
      * RecyclerView. Ce qui permet de conserver une référence sur les vues
      *  et ne pas avoir à utiliser findViewById à chaque fois
      */
-    class CircuitViewHolder extends RecyclerView.ViewHolder {
+    class CircuitViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        private OnItemClickListener itemClickListener;
         TextView nomTextView;
         TextView nombreMin;
         TextView nombreMax;
@@ -119,6 +153,8 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
         TextView prixCircuit;
         TextView guide;
         TextView transport;
+        Button nouvelleEtape;
+       // ListView listeEtapes;
 
         public CircuitViewHolder(View itemView) {
             super(itemView);
@@ -133,7 +169,25 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
             prixCircuit = (TextView) itemView.findViewById(R.id.prixCircuit_text_view);
             guide = (TextView) itemView.findViewById(R.id.guide_text_view);
             transport = (TextView) itemView.findViewById(R.id.transport_text_view);
+            nouvelleEtape = (Button) itemView.findViewById(R.id.ajout_etape);
+          //  listeEtapes = (ListView)itemView.findViewById(R.id.listEtapes);
+
+            //remplirListeEtapes();
+           // etapesAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1, nomsEtape);
+           // viderListeEtapes();
+         //   listeEtapes.setAdapter(etapesAdapter);
+
+            itemView.setOnClickListener(this);
         }
+
+        public void setItemClickListener(OnItemClickListener itemClickListener) {
+            this.itemClickListener = itemClickListener;
+        }
+
+        public void onClick(View v) {
+            itemClickListener.onItemClick(v, getAdapterPosition());
+        }
+    }
 
      /*   public void bind(final Circuit item, final OnItemClickListener listener) {
             //name.setText(item.name);
@@ -145,5 +199,5 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
             });
         } */
 
-    }
+
 }

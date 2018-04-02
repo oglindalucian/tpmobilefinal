@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp" >
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true"
+            android:id="@+id/layout_nom"
+            >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:layout_weight="1"
+                android:hint="Nom etape:"/>
+
+            <EditText
+                android:id="@+id/nom"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/layout_nom"
+            android:id="@+id/layout_nbJours"
+            >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:layout_weight="1"
+                android:hint="Nombre de jours:"/>
+
+
+            <Spinner
+                android:id="@+id/nbJours"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:drawSelectorOnTop="true"
+                android:entries="@array/spinnerRes"/>
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/layout_nbJours"
+            android:id="@+id/layout_arrivee"
+            >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:layout_weight="1"
+                android:hint="Date d'arrivee:"/>
+
+            <EditText
+                android:id="@+id/arrivee"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/layout_arrivee"
+            android:id="@+id/layout_depart"
+            >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:layout_weight="1"
+                android:hint="Date de depart:"/>
+
+            <EditText
+                android:id="@+id/depart"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/layout_depart"
+            android:id="@+id/layout_description"
+            >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:layout_weight="1"
+                android:text="Description:"/>
+
+
+            <EditText
+                android:id="@+id/descriptionEtape"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/layout_description"
+            android:id="@+id/layout_choisirImage"
+            android:layout_marginTop="20dp"
+            >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:layout_weight="1"
+                android:hint="Choisir une image:"/>
+
+            <Button
+                android:id="@+id/choisir_image"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Choisir"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageChoisie"
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_below="@id/layout_choisirImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            />
+
+        <Button
+            android:id="@+id/add_circuit"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Ajouter etape"
+            android:layout_below="@id/imageChoisie"
+            android:layout_marginTop="20dp"
+            android:onClick="ajouterEtape"/>
+
+
+
+    </RelativeLayout>
+</ScrollView>

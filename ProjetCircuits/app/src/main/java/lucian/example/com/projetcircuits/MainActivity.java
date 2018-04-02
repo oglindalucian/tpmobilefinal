@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import lucian.example.com.projetcircuits.Data.CircuitContrat;
 import lucian.example.com.projetcircuits.Data.CircuitDBHelper;
@@ -47,15 +48,13 @@ public class MainActivity extends AppCompatActivity {
       //CircuitDataTemp.insererData(mDb);
       Cursor cursor = obtenirCircuit();
       cAdapter = new CircuitAdapter(this, cursor); //, listener
+
+      //  ListView listeCircuits = (ListView)findViewById(R.id.vue_les_circuits);
+     //   listeCircuits.setAdapter(cAdapter);
+
       circuitRecyclerView.setAdapter(cAdapter);
 
-      circuitRecyclerView.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Intent intent = new Intent(view.getContext(), ListeEtapes.class);
-              startActivity(intent);
-          }
-      });
+
     }
 
 

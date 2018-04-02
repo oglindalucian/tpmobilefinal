@@ -25,20 +25,15 @@ import lucian.example.com.projetcircuits.Data.DatePickerFragment;
 public class AjouterCircuit extends AppCompatActivity implements View.OnClickListener{
 
     EditText nom;
-   // EditText minPlaces;
     Spinner  minPlaces;
-   // EditText maxPlaces;
     Spinner maxPlaces;
-    //EditText resPlaces;
     Spinner resPlaces;
-   // EditText etat;
     Spinner etat;
     EditText depart;
     EditText arrivee;
     EditText photo;
     EditText prix;
     EditText guide;
-   // EditText transport;
     Spinner transport;
     Button choixImage;
     ImageView imageToUpload;
@@ -60,7 +55,6 @@ public class AjouterCircuit extends AppCompatActivity implements View.OnClickLis
         minPlaces = (Spinner)this.findViewById(R.id.min);
         maxPlaces = (Spinner) this.findViewById(R.id.max);
         resPlaces = (Spinner)this.findViewById(R.id.res);
-       // etat = (EditText)this.findViewById(R.id.etat);
         depart = (EditText)this.findViewById(R.id.depart);
         arrivee = (EditText)this.findViewById(R.id.arrivee);
         photo = (EditText)this.findViewById(R.id.photo);
@@ -75,160 +69,16 @@ public class AjouterCircuit extends AppCompatActivity implements View.OnClickLis
        // imageToUpload.setOnClickListener(this);
 
 
-         /* get the current date */
-        startDate = Calendar.getInstance();
-
-        depart.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                showDateDialog(depart, startDate);
-            }
-        });
-
-         /* get the current date */
-        endDate = Calendar.getInstance();
-
-    /*
         arrivee.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                showDateDialog(arrivee, endDate);
-            }
-        });  */
-
-      //  updateDisplay(depart, startDate);
-       // updateDisplay(arrivee, endDate);
-
-      //  CircuitDBHelper dbHelper = new CircuitDBHelper(this);
-     //   mDb = dbHelper.getWritableDatabase();
-
-        /*
-      arrivee.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 showDatePickerDialog(view);
             }
-        });  */
-
-    /*
-        depart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("DATE",1);
-
-                DialogFragment newFragment = new DatePickerFragment();
-                newFragment.setArguments(bundle);
-
-                newFragment.show(getSupportFragmentManager(), "datePicker");
-            }
-        });  */
-/*
-        arrivee.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                showDatePickerDialog2(view);
-            }
-        }); */
-
-/*
-        arrivee.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("DATE",2);
-
-                DialogFragment newFragment = new DatePickerFragment();
-                newFragment.setArguments(bundle);
-
-                newFragment.show(getSupportFragmentManager(), "datePicker");
-
-            }
-        });  */
-
+        });
     }
 
-    private void updateDisplay(TextView dateDisplay, Calendar date) {
-        dateDisplay.setText(
-                new StringBuilder()
-                        .append(date.get(Calendar.YEAR)).append("-")
-                        .append(date.get(Calendar.MONTH) + 1).append("-")
-                        .append(date.get(Calendar.DAY_OF_MONTH)));
 
-                     /*   .append(date.get(Calendar.MONTH) + 1).append("-")
-                        .append(date.get(Calendar.DAY_OF_MONTH)).append("-")
-                        .append(date.get(Calendar.YEAR)).append(" ")); */
-
-    }
-
-    public void showDateDialog(TextView dateDisplay, Calendar date) {
-        activeDateDisplay = dateDisplay;
-        activeDate = date;
-
-        if(dateDisplay==depart) {
-            //showDialog(0);
-            /*
-            Bundle bundle = new Bundle();
-            bundle.putInt("DATE",0);
-
-            DialogFragment newFragment = new DatePickerFragment();
-            newFragment.setArguments(bundle);
-
-            newFragment.show(getSupportFragmentManager(), "datePicker");  */
-        }
-        if(dateDisplay==arrivee) {
-           // showDialog(1);
-        /*    Bundle bundle = new Bundle();
-            bundle.putInt("DATE",1);
-
-            DialogFragment newFragment = new DatePickerFragment();
-            newFragment.setArguments(bundle);
-
-            newFragment.show(getSupportFragmentManager(), "datePicker"); */
-        }
-    }
-
-    private DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            activeDate.set(Calendar.YEAR, year);
-            activeDate.set(Calendar.MONTH, monthOfYear);
-            activeDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateDisplay(activeDateDisplay, activeDate);
-            unregisterDateDisplay();
-        }
-    };
-
-    private void unregisterDateDisplay() {
-        activeDateDisplay = null;
-        activeDate = null;
-    }
-
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        switch (id) {
-            case 0:
-                return new DatePickerDialog(this, dateSetListener, activeDate.get(Calendar.YEAR), activeDate.get(Calendar.MONTH), activeDate.get(Calendar.DAY_OF_MONTH));
-
-            case 1:
-                return new DatePickerDialog(this, dateSetListener, activeDate.get(Calendar.YEAR), activeDate.get(Calendar.MONTH), activeDate.get(Calendar.DAY_OF_MONTH));
-
-        }
-        return null;
-    }
-
-    @Override
-    protected void onPrepareDialog(int id, Dialog dialog) {
-        super.onPrepareDialog(id, dialog);
-        switch (id) {
-            case 0:
-                ((DatePickerDialog) dialog).updateDate(activeDate.get(Calendar.YEAR), activeDate.get(Calendar.MONTH), activeDate.get(Calendar.DAY_OF_MONTH));
-                break;
-            case 1:
-                ((DatePickerDialog) dialog).updateDate(activeDate.get(Calendar.YEAR), activeDate.get(Calendar.MONTH), activeDate.get(Calendar.DAY_OF_MONTH));
-                break;
-        }
-    }
 
     public void ajouterCircuit(View view) {
 
@@ -249,20 +99,9 @@ public class AjouterCircuit extends AppCompatActivity implements View.OnClickLis
         String photoC = "";
 
         try {
-            /*
-            nomCircuit = nom.getText().toString();
-            departC = depart.getText().toString();
-            arriveeC = arrivee.getText().toString();
-            guideCircuit = guide.getText().toString();
-            transportC = transport.getSelectedItem().toString();
-            min = Integer.parseInt(minPlaces.getSelectedItem().toString());
-            max = Integer.parseInt(maxPlaces.getSelectedItem().toString());
-            res = Integer.parseInt(resPlaces.getSelectedItem().toString());
-           // etatC = etat.getSelectedItem().toString();
-           // etatCircuit = Integer.parseInt(etat.getSelectedItem().toString());  */
+
             prixC = Integer.parseInt(prix.getText().toString());
-           // photoC = photo.getText().toString();
-           //ajouterNouveauCircuit(nomCircuit ,etatCircuit,min,max,res,departC,arriveeC,prixC,guideCircuit,transportC, photoC);
+
 
         }
         catch (NumberFormatException ex) {

@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".AjouterCircuit" />
-        <activity android:name=".ListeEtapes"></activity>
+        <activity android:name=".ListeEtapes" />
+        <activity android:name=".AjouterEtape"></activity>
     </application>
 
 </manifest>
