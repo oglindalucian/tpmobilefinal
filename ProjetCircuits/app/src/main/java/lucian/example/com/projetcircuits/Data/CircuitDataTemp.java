@@ -49,6 +49,39 @@ public class CircuitDataTemp {
 
         list.add(cv);
 
+        cv = new ContentValues();
+        cv.put(CircuitContrat.Etape.COLONNE_NOM_ETAPE, "Londres");
+        cv.put(CircuitContrat.Etape.COLONNE_ID_CIRCUIT, 1);
+        cv.put(CircuitContrat.Etape.COLONNE_NBRE_JOUR, 2);
+        cv.put(CircuitContrat.Etape.COLONNE_DATE_ARRIVEE, "2018-03-30");
+        cv.put(CircuitContrat.Etape.COLONNE_DATE_DEPART, "2018-04-01");
+        cv.put(CircuitContrat.Etape.COLONNE_DESCRIPTION_ETAPE, "Sejour a Londres");
+        cv.put(CircuitContrat.Etape.COLONNE_PHOTO_ETAPE, "");
+
+        list.add(cv);
+
+        cv = new ContentValues();
+        cv.put(CircuitContrat.Etape.COLONNE_NOM_ETAPE, "Paris");
+        cv.put(CircuitContrat.Etape.COLONNE_ID_CIRCUIT, 1);
+        cv.put(CircuitContrat.Etape.COLONNE_NBRE_JOUR, 2);
+        cv.put(CircuitContrat.Etape.COLONNE_DATE_ARRIVEE, "2018-04-01");
+        cv.put(CircuitContrat.Etape.COLONNE_DATE_DEPART, "2018-04-03");
+        cv.put(CircuitContrat.Etape.COLONNE_DESCRIPTION_ETAPE, "Sejour a Paris");
+        cv.put(CircuitContrat.Etape.COLONNE_PHOTO_ETAPE, "");
+
+        list.add(cv);
+
+        cv = new ContentValues();
+        cv.put(CircuitContrat.Etape.COLONNE_NOM_ETAPE, "Rome");
+        cv.put(CircuitContrat.Etape.COLONNE_ID_CIRCUIT, 2);
+        cv.put(CircuitContrat.Etape.COLONNE_NBRE_JOUR, 2);
+        cv.put(CircuitContrat.Etape.COLONNE_DATE_ARRIVEE, "2018-03-30");
+        cv.put(CircuitContrat.Etape.COLONNE_DATE_DEPART, "2018-04-01");
+        cv.put(CircuitContrat.Etape.COLONNE_DESCRIPTION_ETAPE, "Sejour a Rome");
+        cv.put(CircuitContrat.Etape.COLONNE_PHOTO_ETAPE, "");
+
+        list.add(cv);
+
         //insert all guests in one transaction
         try
         {

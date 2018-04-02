@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
+
+    <ImageView
+        android:id="@+id/photoEtape"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_margin="20dp"
+        />
+
+    <TextView
+        android:id="@+id/nom_text_view"
+        android:layout_below="@id/photoEtape"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="1"
+        android:fontFamily="sans-serif"
+        android:textSize="32sp"
+        android:text="Nom Etape"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/Layout_idCircuit"
+        android:layout_below="@id/nom_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="ID Circuit:"/>
+
+        <TextView
+            android:id="@+id/idCircuit_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/Layout_nombreJours"
+        android:layout_below="@id/Layout_idCircuit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="Nombre de jours:"/>
+
+        <TextView
+            android:id="@+id/nombreJours_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="100"/>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/Layout_arrivee"
+        android:layout_below="@id/Layout_nombreJours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="Date d'arrivee:"/>
+
+        <TextView
+            android:id="@+id/arrivee_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="4"/>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/Layout_depart"
+        android:layout_below="@id/Layout_arrivee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="Date de depart:"/>
+
+        <TextView
+            android:id="@+id/depart_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:text="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/layout_description"
+        android:layout_below="@id/Layout_depart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="Description:"/>
+
+        <TextView
+            android:id="@+id/description_text_view"
+            android:layout_below="@id/Layout_etat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text=""/>
+
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/ajout_etape"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="AJOUTER ETAPE"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@id/layout_description"/>
+
+</RelativeLayout>

@@ -104,7 +104,9 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
         holder.setItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Toast.makeText(mContext, "Le holder no:", Toast.LENGTH_LONG).show();
+                //Toast.makeText(mContext, "Le holder no:", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(mContext, ListeEtapes.class);
+                mContext.startActivity(intent);
             }
         });
 

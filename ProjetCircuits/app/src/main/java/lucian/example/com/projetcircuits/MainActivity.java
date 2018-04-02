@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         CircuitDBHelper dbHelper = new CircuitDBHelper(this);
       mDb = dbHelper.getWritableDatabase();
-      //CircuitDataTemp.insererData(mDb);
+      CircuitDataTemp.insererData(mDb);//
       Cursor cursor = obtenirCircuit();
       cAdapter = new CircuitAdapter(this, cursor); //, listener
 
