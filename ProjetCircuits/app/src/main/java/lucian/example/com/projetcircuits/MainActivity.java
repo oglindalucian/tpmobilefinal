@@ -8,20 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.ListView;
 
+import lucian.example.com.projetcircuits.Data.BaseDeDonnees;
 import lucian.example.com.projetcircuits.Data.CircuitContrat;
-import lucian.example.com.projetcircuits.Data.CircuitDBHelper;
 import lucian.example.com.projetcircuits.Data.CircuitDataTemp;
 
 public class MainActivity extends AppCompatActivity {
 
     private CircuitAdapter cAdapter;
-    public SQLiteDatabase mDb;
+  //  public static SQLiteDatabase mDb;
 
     private final static String LOG_TAG = MainActivity.class.getSimpleName();
     public static final int TEXT_REQUEST = 1;
@@ -36,16 +32,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         RecyclerView circuitRecyclerView;
-
-        // Set local attributes to corresponding views
         circuitRecyclerView = (RecyclerView) this.findViewById(R.id.vue_les_circuits);
-
-        // Set layout for the RecyclerView, because it's a list we are using the linear layout
         circuitRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        CircuitDBHelper dbHelper = new CircuitDBHelper(this);
-      mDb = dbHelper.getWritableDatabase();
-      CircuitDataTemp.insererData(mDb);//
+    //   CircuitDBHelper dbHelper = new CircuitDBHelper(this);
+
+     //   mDb = dbHelper.getWritableDatabase();
+      CircuitDataTemp.insererData(BaseDeDonnees.CircuitDBHelper.getDatabase());//
       Cursor cursor = obtenirCircuit();
       cAdapter = new CircuitAdapter(this, cursor); //, listener
 
@@ -64,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private Cursor obtenirCircuit() {
-        return mDb.query(
+        return BaseDeDonnees.CircuitDBHelper.getDatabase().query(
                 CircuitContrat.Circuit.NOM_TABLE,
                 null,
                 null,
@@ -126,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         cv.put(CircuitContrat.Circuit.COLONNE_PRIX_CIRCUIT, prix);
         cv.put(CircuitContrat.Circuit.COLONNE_GUIDE, guide);
         cv.put(CircuitContrat.Circuit.COLONNE_TRANSPORT, transport);
-        return mDb.insert(CircuitContrat.Circuit.NOM_TABLE, null, cv);
+        return BaseDeDonnees.CircuitDBHelper.getDatabase().insert(CircuitContrat.Circuit.NOM_TABLE, null, cv);
 
     }
 }

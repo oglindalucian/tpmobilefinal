@@ -4,13 +4,18 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import lucian.example.com.projetcircuits.App;
+
 /**
- * Created by lucian on 2018-03-30.
+ * Created by lucian on 2018-04-03.
  */
 
-public class CircuitDBHelper extends SQLiteOpenHelper {
+public class BaseDeDonnees {
+    public static class CircuitDBHelper extends SQLiteOpenHelper {
+
     private final static String DATABASE_NAME = "h18circuits.db";
     private final static int DATABASE_VERSION = 1;
+    private static CircuitDBHelper circuitDBHelper;// = new CircuitDBHelper();
 
     final String SQL_CREATE_CIRCUIT_TABLE = "CREATE TABLE " +
             CircuitContrat.Circuit.NOM_TABLE + " (" +
@@ -54,11 +59,15 @@ public class CircuitDBHelper extends SQLiteOpenHelper {
 
             "); ";
 
+    /*
     public CircuitDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    } */
+
+
+    private CircuitDBHelper() {
+        super(App.getAppContext(), DATABASE_NAME, null, DATABASE_VERSION);
     }
-
-
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -72,7 +81,18 @@ public class CircuitDBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Circuit.NOM_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Etape.NOM_TABLE);
-        db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Etape.NOM_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Jour.NOM_TABLE);
         onCreate(db);
     }
+
+
+    public static synchronized SQLiteDatabase getDatabase() {
+        if(circuitDBHelper==null)
+        {
+            circuitDBHelper = new CircuitDBHelper();
+        }
+
+        return circuitDBHelper.getWritableDatabase();
+    }
+}
 }
