@@ -1,6 +1,9 @@
 package lucian.example.com.projetcircuits;import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +20,8 @@ import lucian.example.com.projetcircuits.Data.CircuitContrat;
 import lucian.example.com.projetcircuits.Model.Circuit;
 
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,7 +77,7 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
         int res = mCursor.getInt(mCursor.getColumnIndex(CircuitContrat.Circuit.COLONNE_NBRE_PLACES_RESERVEES));
         String depart = mCursor.getString(mCursor.getColumnIndex(CircuitContrat.Circuit.COLONNE_DATE_DEPART));
         String arrivee = mCursor.getString(mCursor.getColumnIndex(CircuitContrat.Circuit.COLONNE_DATE_ARRIVEE));
-       // String photo = mCursor.getString(mCursor.getColumnIndex(CircuitContrat.Circuit.COLONNE_PHOTO_CIRCUIT));
+        String photoUri = mCursor.getString(mCursor.getColumnIndex(CircuitContrat.Circuit.COLONNE_PHOTO_CIRCUIT));
         int prix = mCursor.getInt(mCursor.getColumnIndex(CircuitContrat.Circuit.COLONNE_PRIX_CIRCUIT));
         String guide = mCursor.getString(mCursor.getColumnIndex(CircuitContrat.Circuit.COLONNE_GUIDE));
         String transport = mCursor.getString(mCursor.getColumnIndex(CircuitContrat.Circuit.COLONNE_TRANSPORT));
@@ -88,9 +93,31 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
         holder.dateDepart.setText(String.valueOf(depart));
         holder.dateArrivee.setText(String.valueOf(arrivee));
       //  holder.photo.setText(String.valueOf(photo));
-        holder.prixCircuit.setText(String.valueOf(prix));
+        holder.prixCircuit.setText(String.valueOf(prix)+" $");
         holder.guide.setText(guide);
         holder.transport.setText(transport);
+        Uri myUri;
+        try {
+            myUri = Uri.parse(photoUri);
+        } catch (Exception e) {
+         //   myUri = Uri.parse("content://media/external/images/media/679684");
+            myUri = Uri.parse("");
+        }
+
+        InputStream is;
+        try {
+            is = mContext.getContentResolver().openInputStream(myUri);
+           Bitmap image = BitmapFactory.decodeStream(is);
+            holder.photo.setImageBitmap(image);
+        } catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+            Toast.makeText(mContext, "Image introuvable", Toast.LENGTH_LONG);
+        }
+
+
+
+
+       // holder.photo.setImageURI(myUri);
 /*
         remplirListeEtapes();
         etapesAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1, nomsEtape);

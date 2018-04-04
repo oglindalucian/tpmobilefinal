@@ -3,11 +3,13 @@ package lucian.example.com.projetcircuits;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import lucian.example.com.projetcircuits.Data.CircuitContrat;
 import lucian.example.com.projetcircuits.Data.CircuitDBHelper;
@@ -92,9 +94,13 @@ public class MainActivity extends AppCompatActivity {
                 String res = data.getStringExtra("EXTRA_RES");
                 String etat = data.getStringExtra("EXTRA_ETAT");
                 String prix = data.getStringExtra("EXTRA_PRIX");
+
                 String photo = data.getStringExtra("EXTRA_PHOTO");
+
                 if (nomCircuit != "" && dateDepart != "" && dateArrivee != "" && guide!="" && transport!="" && min!="" && max!=""
                         && res!="" && etat!="" && prix!="" && photo!="") {
+                    if(prix=="")
+                        prix="5000";
                     ajouterNouveauCircuit(nomCircuit, Integer.parseInt(etat), Integer.parseInt(min), Integer.parseInt(max),
                             Integer.parseInt(res), dateDepart, dateArrivee, Integer.parseInt(prix), guide, transport, photo);
                     cAdapter.echangerCurseur(obtenirCircuit());

@@ -3,6 +3,9 @@ package lucian.example.com.projetcircuits;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +21,8 @@ import lucian.example.com.projetcircuits.Data.CircuitContrat;
 import lucian.example.com.projetcircuits.Model.Circuit;
 
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -50,7 +55,7 @@ public class EtapesAdapter extends RecyclerView.Adapter <EtapesAdapter.EtapeView
         int nbJours = mCursor.getInt(mCursor.getColumnIndex(CircuitContrat.Etape.COLONNE_NBRE_JOUR));
         String arrivee = mCursor.getString(mCursor.getColumnIndex(CircuitContrat.Etape.COLONNE_DATE_ARRIVEE));
         String depart = mCursor.getString(mCursor.getColumnIndex(CircuitContrat.Etape.COLONNE_DATE_DEPART));
-       // String photo = mCursor.getString(mCursor.getColumnIndex(CircuitContrat.Circuit.COLONNE_PHOTO_CIRCUIT));
+        String photoUri = mCursor.getString(mCursor.getColumnIndex(CircuitContrat.Etape.COLONNE_PHOTO_ETAPE));
         String description = mCursor.getString(mCursor.getColumnIndex(CircuitContrat.Etape.COLONNE_DESCRIPTION_ETAPE));
 
         holder.nomTextView.setText(nom);
@@ -60,6 +65,24 @@ public class EtapesAdapter extends RecyclerView.Adapter <EtapesAdapter.EtapeView
         holder.dateDepart.setText(String.valueOf(depart));
        //  holder.photo.setText(String.valueOf(photo));
         holder.description.setText(description);
+
+        Uri myUri;
+        try {
+            myUri = Uri.parse(photoUri);
+        } catch (Exception e) {
+            //   myUri = Uri.parse("content://media/external/images/media/679684");
+            myUri = Uri.parse("");
+        }
+
+        InputStream is;
+        try {
+            is = mContext.getContentResolver().openInputStream(myUri);
+            Bitmap image = BitmapFactory.decodeStream(is);
+            holder.photo.setImageBitmap(image);
+        } catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+            Toast.makeText(mContext, "Image introuvable", Toast.LENGTH_LONG);
+        }
 
         long id = mCursor.getLong(mCursor.getColumnIndex(CircuitContrat.Etape._ID));
         holder.itemView.setTag(id);

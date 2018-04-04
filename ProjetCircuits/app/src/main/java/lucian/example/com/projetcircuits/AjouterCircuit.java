@@ -162,6 +162,7 @@ public class AjouterCircuit extends AppCompatActivity implements View.OnClickLis
             Uri imageSelectionne = data.getData();
             imageToUpload.setImageURI(imageSelectionne);
             stringUri = imageSelectionne.toString();
+          //  replyIntent.putExtra("EXTRA_PHOTO", imageSelectionne);
             replyIntent.putExtra("EXTRA_PHOTO", stringUri);
             Toast.makeText(this, stringUri, Toast.LENGTH_LONG).show();
         }
