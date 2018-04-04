@@ -173,12 +173,6 @@
 
 
 
-    <Button
-        android:id="@+id/ajout_etape"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="AJOUTER ETAPE"
-        android:layout_marginLeft="16dp"
-        android:layout_below="@id/layout_description"/>
+
 
 </RelativeLayout>

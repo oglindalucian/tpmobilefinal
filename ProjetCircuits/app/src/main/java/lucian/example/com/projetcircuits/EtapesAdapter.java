@@ -96,7 +96,7 @@ public class EtapesAdapter extends RecyclerView.Adapter <EtapesAdapter.EtapeView
         TextView dateDepart;
         ImageView photo;
         TextView description;
-        Button nouvelleEtape;
+      //  Button nouvelleEtape;
         // ListView listeEtapes;
 
         public EtapeViewHolder(View itemView) {
@@ -108,7 +108,7 @@ public class EtapesAdapter extends RecyclerView.Adapter <EtapesAdapter.EtapeView
             dateDepart = (TextView) itemView.findViewById(R.id.depart_text_view);
             photo = (ImageView) itemView.findViewById(R.id.photoEtape);
             description = (TextView) itemView.findViewById(R.id.description_text_view);
-            nouvelleEtape = (Button) itemView.findViewById(R.id.ajout_etape);
+         //   nouvelleEtape = (Button) itemView.findViewById(R.id.ajout_etape);
             //  listeEtapes = (ListView)itemView.findViewById(R.id.listEtapes);
 
             //remplirListeEtapes();

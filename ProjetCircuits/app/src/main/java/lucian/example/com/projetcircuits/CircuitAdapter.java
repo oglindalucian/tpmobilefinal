@@ -157,7 +157,7 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
         TextView prixCircuit;
         TextView guide;
         TextView transport;
-        Button nouvelleEtape;
+      //  Button nouvelleEtape;
        // ListView listeEtapes;
 
         public CircuitViewHolder(View itemView) {
@@ -173,7 +173,7 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
             prixCircuit = (TextView) itemView.findViewById(R.id.prixCircuit_text_view);
             guide = (TextView) itemView.findViewById(R.id.guide_text_view);
             transport = (TextView) itemView.findViewById(R.id.transport_text_view);
-            nouvelleEtape = (Button) itemView.findViewById(R.id.ajout_etape);
+          //  nouvelleEtape = (Button) itemView.findViewById(R.id.ajout_etape);
           //  listeEtapes = (ListView)itemView.findViewById(R.id.listEtapes);
 
             //remplirListeEtapes();

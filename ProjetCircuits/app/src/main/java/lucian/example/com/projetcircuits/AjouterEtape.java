@@ -37,7 +37,7 @@ public class AjouterEtape extends AppCompatActivity implements View.OnClickListe
 
     String stringUri;
     Intent replyIntent;
-    int idCircuit = 1;
+    long idCircuit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,16 @@ public class AjouterEtape extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_ajouter_etape);
         replyIntent = new Intent();
 
+        Intent i = getIntent();
+        Bundle bd = i.getExtras();
+        if(bd != null)
+        {
+            idCircuit = (long) bd.get("EXTRA_LE_ID_CIRCUIT");
+        }
+
+
+       // Intent i = getIntent();
+      //  idCircuit = (long)Integer.parseInt(i.getStringExtra("EXTRA_LE_ID_CIRCUIT"));
         //idCircuit = Integer.parseInt(getIntent().getStringExtra("EXTRA_LE_ID_CIRCUIT")); //?
 
         nom = (EditText)this.findViewById(R.id.nom);

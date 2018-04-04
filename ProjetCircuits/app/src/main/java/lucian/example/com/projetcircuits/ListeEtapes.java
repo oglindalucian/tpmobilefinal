@@ -16,7 +16,7 @@ public class ListeEtapes extends AppCompatActivity {
     public static final int TEXT_REQUEST = 10;
     private EtapesAdapter eAdapter;
    // private SQLiteDatabase mDb;
-   int idCircuit = 1;
+   long idCircuit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,13 @@ public class ListeEtapes extends AppCompatActivity {
 
        // idCircuit= (int) savedInstanceState.getSerializable("EXTRA_ID_CIRCUIT"); //?
        // idCircuit = Integer.parseInt(getIntent().getStringExtra("EXTRA_ID_CIRCUIT"));
+
+       Intent intent = getIntent();
+        Bundle bd = intent.getExtras();
+        if(bd != null)
+        {
+            idCircuit = (long) bd.get("EXTRA_ID_CIRCUIT");
+        }
 
         RecyclerView etapesRecyclerView;
         etapesRecyclerView = (RecyclerView) this.findViewById(R.id.vue_les_etapes);
@@ -37,6 +44,12 @@ public class ListeEtapes extends AppCompatActivity {
     }
 
     public void ajouterEtape(View view) {
+     /*   Intent i = getIntent();
+        Bundle bd = i.getExtras();
+        if(bd != null)
+        {
+            idCircuit = (long) bd.get("EXTRA_ID_CIRCUIT");
+        } */
         Intent intent = new Intent(this, AjouterEtape.class);
         intent.putExtra("EXTRA_LE_ID_CIRCUIT", idCircuit);
         startActivityForResult(intent, TEXT_REQUEST);
@@ -47,7 +60,7 @@ public class ListeEtapes extends AppCompatActivity {
         return CircuitDBHelper.getInstance(this).getWritableDatabase().query(
                 CircuitContrat.Etape.NOM_TABLE,
                 null,
-                null,
+                CircuitContrat.Etape.COLONNE_ID_CIRCUIT + "=" + idCircuit,
                 null,
                 null,
                 null,
