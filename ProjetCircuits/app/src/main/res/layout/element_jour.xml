@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
+
+
+
+    <TextView
+        android:id="@+id/nom_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="1"
+        android:fontFamily="sans-serif"
+        android:textSize="32sp"
+        android:text="Nom Jour"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/Layout_nomVille"
+        android:layout_below="@id/nom_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="Nom ville:"/>
+
+        <TextView
+            android:id="@+id/nomVille_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/Layout_idEtape"
+        android:layout_below="@id/Layout_nomVille"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="ID Etape:"/>
+
+        <TextView
+            android:id="@+id/idEtape_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="100"/>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/Layout_hotel"
+        android:layout_below="@id/Layout_idEtape"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="Hotel:"/>
+
+        <TextView
+            android:id="@+id/hotel_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="4"/>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/Layout_restaurant"
+        android:layout_below="@id/Layout_hotel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:text="Restaurant:"/>
+
+        <TextView
+            android:id="@+id/restaurant_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:text="1"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

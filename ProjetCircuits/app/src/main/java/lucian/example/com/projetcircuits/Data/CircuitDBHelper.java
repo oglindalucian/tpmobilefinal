@@ -86,7 +86,7 @@ public class CircuitDBHelper extends SQLiteOpenHelper {
 
         db.execSQL(SQL_CREATE_CIRCUIT_TABLE);
         db.execSQL(SQL_CREATE_ETAPE_TABLE);
-      //  db.execSQL(SQL_CREATE_JOUR_TABLE);
+        db.execSQL(SQL_CREATE_JOUR_TABLE);
     }
 
     @Override
@@ -94,7 +94,7 @@ public class CircuitDBHelper extends SQLiteOpenHelper {
         if(newVersion>oldVersion) {
             db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Circuit.NOM_TABLE);
             db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Etape.NOM_TABLE);
-            //  db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Jour.NOM_TABLE);
+            db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Jour.NOM_TABLE);
             onCreate(db);
         }
     }

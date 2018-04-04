@@ -22,7 +22,9 @@
         </activity>
         <activity android:name=".AjouterCircuit" />
         <activity android:name=".ListeEtapes" />
-        <activity android:name=".AjouterEtape"></activity>
+        <activity android:name=".AjouterEtape" />
+        <activity android:name=".ListeJours" />
+        <activity android:name=".AjouterJour"></activity>
     </application>
 
 </manifest>

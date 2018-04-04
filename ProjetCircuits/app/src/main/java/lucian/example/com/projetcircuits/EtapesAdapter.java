@@ -84,13 +84,16 @@ public class EtapesAdapter extends RecyclerView.Adapter <EtapesAdapter.EtapeView
             Toast.makeText(mContext, "Image introuvable", Toast.LENGTH_LONG);
         }
 
-        long id = mCursor.getLong(mCursor.getColumnIndex(CircuitContrat.Etape._ID));
+        final long id = mCursor.getLong(mCursor.getColumnIndex(CircuitContrat.Etape._ID));
         holder.itemView.setTag(id);
 
         holder.setItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Toast.makeText(mContext, "Le holder no:", Toast.LENGTH_LONG).show();
+               // Toast.makeText(mContext, "Le holder no:", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(mContext, ListeJours.class);
+                intent.putExtra("EXTRA_ID_ETAPE", id);
+                mContext.startActivity(intent);
             }
         });
 
