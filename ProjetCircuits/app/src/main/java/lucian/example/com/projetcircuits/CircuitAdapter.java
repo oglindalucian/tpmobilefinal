@@ -99,7 +99,7 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
 
         */
 
-        long id = mCursor.getLong(mCursor.getColumnIndex(CircuitContrat.Circuit._ID));
+        final long id = mCursor.getLong(mCursor.getColumnIndex(CircuitContrat.Circuit._ID));
         holder.itemView.setTag(id);
 
         holder.setItemClickListener(new OnItemClickListener() {
@@ -107,6 +107,7 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
             public void onItemClick(View v, int position) {
                 //Toast.makeText(mContext, "Le holder no:", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(mContext, ListeEtapes.class);
+                intent.putExtra("EXTRA_ID_CIRCUIT", id);
                 mContext.startActivity(intent);
             }
         });

@@ -69,7 +69,7 @@ public class AjouterCircuit extends AppCompatActivity implements View.OnClickLis
        // imageToUpload.setOnClickListener(this);
 
 
-        arrivee.setOnClickListener(new View.OnClickListener() {
+        depart.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {

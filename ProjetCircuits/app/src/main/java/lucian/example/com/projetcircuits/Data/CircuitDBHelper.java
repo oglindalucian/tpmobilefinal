@@ -7,11 +7,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import lucian.example.com.projetcircuits.App;
 
 /**
- * Created by lucian on 2018-04-03.
+ * Created by lucian on 2018-04-04.
  */
 
-public class BaseDeDonnees {
-    public static class CircuitDBHelper extends SQLiteOpenHelper {
+public class CircuitDBHelper extends SQLiteOpenHelper {
 
     private final static String DATABASE_NAME = "h18circuits.db";
     private final static int DATABASE_VERSION = 1;
@@ -64,35 +63,51 @@ public class BaseDeDonnees {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     } */
 
-
+/*
     private CircuitDBHelper() {
         super(App.getAppContext(), DATABASE_NAME, null, DATABASE_VERSION);
+    }  */
+
+
+
+        private CircuitDBHelper(Context context) {
+            super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        }
+
+    @Override
+    public void onConfigure(SQLiteDatabase db) {
+        super.onConfigure(db);
+        db.setForeignKeyConstraintsEnabled(true);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL(SQL_CREATE_CIRCUIT_TABLE);
         db.execSQL(SQL_CREATE_ETAPE_TABLE);
-        db.execSQL(SQL_CREATE_JOUR_TABLE);
+      //  db.execSQL(SQL_CREATE_JOUR_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Circuit.NOM_TABLE);
-        db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Etape.NOM_TABLE);
-        db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Jour.NOM_TABLE);
-        onCreate(db);
+        if(newVersion>oldVersion) {
+            db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Circuit.NOM_TABLE);
+            db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Etape.NOM_TABLE);
+            //  db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Jour.NOM_TABLE);
+            onCreate(db);
+        }
     }
 
 
-    public static synchronized SQLiteDatabase getDatabase() {
+    public static synchronized CircuitDBHelper getInstance(Context context) {
+        //   Context context = App.getAppContext();
         if(circuitDBHelper==null)
         {
-            circuitDBHelper = new CircuitDBHelper();
+            circuitDBHelper = new CircuitDBHelper(context.getApplicationContext());
         }
 
-        return circuitDBHelper.getWritableDatabase();
+        return circuitDBHelper;     //.getWritableDatabase();
     }
 }
-}
+

@@ -49,6 +49,30 @@ public class CircuitDataTemp {
 
         list.add(cv);
 
+
+
+        //insert all guests in one transaction
+        try
+        {
+            db.beginTransaction();
+            //clear the table first
+            db.delete (CircuitContrat.Circuit.NOM_TABLE,null,null);
+            //go through the list and add one by one
+            for(ContentValues c:list){
+                db.insert(CircuitContrat.Circuit.NOM_TABLE, null, c);
+            }
+            db.setTransactionSuccessful();
+        }
+        catch (SQLException e) {
+            //too bad :(
+        }
+        finally
+        {
+            db.endTransaction();
+        }
+
+        list.clear();
+
         cv = new ContentValues();
         cv.put(CircuitContrat.Etape.COLONNE_NOM_ETAPE, "Londres");
         cv.put(CircuitContrat.Etape.COLONNE_ID_CIRCUIT, 1);
@@ -82,15 +106,14 @@ public class CircuitDataTemp {
 
         list.add(cv);
 
-        //insert all guests in one transaction
         try
         {
             db.beginTransaction();
             //clear the table first
-            db.delete (CircuitContrat.Circuit.NOM_TABLE,null,null);
+            db.delete (CircuitContrat.Etape.NOM_TABLE,null,null);
             //go through the list and add one by one
             for(ContentValues c:list){
-                db.insert(CircuitContrat.Circuit.NOM_TABLE, null, c);
+                db.insert(CircuitContrat.Etape.NOM_TABLE, null, c);
             }
             db.setTransactionSuccessful();
         }

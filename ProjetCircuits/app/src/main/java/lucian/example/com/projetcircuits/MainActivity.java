@@ -3,15 +3,14 @@ package lucian.example.com.projetcircuits;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import lucian.example.com.projetcircuits.Data.BaseDeDonnees;
 import lucian.example.com.projetcircuits.Data.CircuitContrat;
+import lucian.example.com.projetcircuits.Data.CircuitDBHelper;
 import lucian.example.com.projetcircuits.Data.CircuitDataTemp;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     //   CircuitDBHelper dbHelper = new CircuitDBHelper(this);
 
      //   mDb = dbHelper.getWritableDatabase();
-      CircuitDataTemp.insererData(BaseDeDonnees.CircuitDBHelper.getDatabase());//
+      CircuitDataTemp.insererData(CircuitDBHelper.getInstance(this).getWritableDatabase());//
       Cursor cursor = obtenirCircuit();
       cAdapter = new CircuitAdapter(this, cursor); //, listener
 
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private Cursor obtenirCircuit() {
-        return BaseDeDonnees.CircuitDBHelper.getDatabase().query(
+        return CircuitDBHelper.getInstance(this).getWritableDatabase().query(
                 CircuitContrat.Circuit.NOM_TABLE,
                 null,
                 null,
@@ -119,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         cv.put(CircuitContrat.Circuit.COLONNE_PRIX_CIRCUIT, prix);
         cv.put(CircuitContrat.Circuit.COLONNE_GUIDE, guide);
         cv.put(CircuitContrat.Circuit.COLONNE_TRANSPORT, transport);
-        return BaseDeDonnees.CircuitDBHelper.getDatabase().insert(CircuitContrat.Circuit.NOM_TABLE, null, cv);
+        return CircuitDBHelper.getInstance(this).getWritableDatabase().insert(CircuitContrat.Circuit.NOM_TABLE, null, cv);
 
     }
 }
