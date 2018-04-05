@@ -9,19 +9,21 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import lucian.example.com.projetcircuits.Data.CircuitContrat;
 import lucian.example.com.projetcircuits.Data.CircuitDBHelper;
 import lucian.example.com.projetcircuits.Data.CircuitDataTemp;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     private CircuitAdapter cAdapter;
   //  public static SQLiteDatabase mDb;
 
     private final static String LOG_TAG = MainActivity.class.getSimpleName();
     public static final int TEXT_REQUEST = 1;
+    Button connecterUtilisateur;
 
   //  private OnItemClickListener listener;
 
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         circuitRecyclerView = (RecyclerView) this.findViewById(R.id.vue_les_circuits);
         circuitRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        connecterUtilisateur=(Button) this.findViewById(R.id.bouton_signIn);
     //   CircuitDBHelper dbHelper = new CircuitDBHelper(this);
 
      //   mDb = dbHelper.getWritableDatabase();
@@ -51,10 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
+    public void signIn(View view) {
+       // Intent intent = new Intent(this, SignIn.class);
+       // startActivity(intent);
+        startActivity(new Intent(this, SignIn.class));
+    }
 
 
     private Cursor obtenirCircuit() {

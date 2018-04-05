@@ -24,7 +24,9 @@
         <activity android:name=".ListeEtapes" />
         <activity android:name=".AjouterEtape" />
         <activity android:name=".ListeJours" />
-        <activity android:name=".AjouterJour"></activity>
+        <activity android:name=".AjouterJour" />
+        <activity android:name=".SignIn" />
+        <activity android:name=".SignUp"></activity>
     </application>
 
 </manifest>

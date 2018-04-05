@@ -5,11 +5,13 @@
 
     >
 
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentTop="true"
+        android:layout_below="@id/layout_btns"
         android:id="@+id/layout_btns"
         android:layout_marginBottom="30dp"
         >
@@ -22,6 +24,17 @@
             android:background="#00F"
             android:onClick="ajouterCircuit"
             android:layout_marginLeft="30dp"
+            />
+
+        <Button
+            android:id="@+id/bouton_signIn"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Connexion"
+            android:background="#00F"
+            android:onClick="signIn"
+            android:layout_marginLeft="30dp"
+
             />
 
 
