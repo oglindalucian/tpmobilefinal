@@ -3,11 +3,13 @@ package lucian.example.com.projetcircuits;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 
 import lucian.example.com.projetcircuits.Data.CircuitContrat;
 import lucian.example.com.projetcircuits.Data.CircuitDBHelper;
@@ -17,6 +19,8 @@ public class ListeEtapes extends AppCompatActivity {
     private EtapesAdapter eAdapter;
    // private SQLiteDatabase mDb;
    long idCircuit;
+   Button ajouterEtape;
+   String verifierAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +40,31 @@ public class ListeEtapes extends AppCompatActivity {
         RecyclerView etapesRecyclerView;
         etapesRecyclerView = (RecyclerView) this.findViewById(R.id.vue_les_etapes);
         etapesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-     //   CircuitDBHelper dbHelper = new CircuitDBHelper(this);
-      //  MainActivity.mDb = dbHelper.getDatabase();
+
+        ajouterEtape = (Button) this.findViewById(R.id.bouton_ajouter);
+        ajouterEtape.setVisibility(View.INVISIBLE);
+
         Cursor cursor = obtenirEtape();
         eAdapter = new EtapesAdapter(this, cursor);
         etapesRecyclerView.setAdapter(eAdapter);
+
+        SQLiteDatabase db = CircuitDBHelper.getInstance(this).getWritableDatabase();
+        if((db.rawQuery("SELECT isAdmin FROM admin", null))!=null) {
+            Cursor cursor2 = db.rawQuery("SELECT isAdmin FROM admin", null);
+
+            if (cursor2.getCount() > 0) {
+                cursor2.moveToFirst();
+                do {
+                    verifierAdmin = cursor2.getString(cursor2.getColumnIndex("isAdmin"));
+                } while (cursor2.moveToNext());
+                cursor2.close();
+                db.close();
+            }
+
+            if (verifierAdmin == "admin") {
+                ajouterEtape.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     public void ajouterEtape(View view) {

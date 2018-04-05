@@ -3,11 +3,13 @@ package lucian.example.com.projetcircuits;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 
 import lucian.example.com.projetcircuits.Data.CircuitContrat;
 import lucian.example.com.projetcircuits.Data.CircuitDBHelper;
@@ -17,6 +19,8 @@ public class ListeJours extends AppCompatActivity {
     private JourAdapter jAdapter;
   //  long idCircuit;
     long idEtape;
+    Button ajouterJour;
+    String verifierAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +39,30 @@ public class ListeJours extends AppCompatActivity {
         joursRecyclerView = (RecyclerView) this.findViewById(R.id.vue_les_jours);
         joursRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        ajouterJour = (Button)this.findViewById(R.id.bouton_ajouter);
+        ajouterJour.setVisibility(View.INVISIBLE);
+
         Cursor cursor = obtenirJour();
         jAdapter = new JourAdapter(this, cursor);
         joursRecyclerView.setAdapter(jAdapter);
+
+        SQLiteDatabase db = CircuitDBHelper.getInstance(this).getWritableDatabase();
+        if((db.rawQuery("SELECT isAdmin FROM admin", null))!=null) {
+            Cursor cursor2 = db.rawQuery("SELECT isAdmin FROM admin", null);
+
+            if (cursor2.getCount() > 0) {
+                cursor2.moveToFirst();
+                do {
+                    verifierAdmin = cursor2.getString(cursor2.getColumnIndex("isAdmin"));
+                } while (cursor2.moveToNext());
+                cursor2.close();
+                db.close();
+            }
+
+            if (verifierAdmin == "admin") {
+                ajouterJour.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     public void ajouterJour(View view) {

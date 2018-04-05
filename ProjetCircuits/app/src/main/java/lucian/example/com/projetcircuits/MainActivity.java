@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity  {
     private final static String LOG_TAG = MainActivity.class.getSimpleName();
     public static final int TEXT_REQUEST = 1;
     Button connecterUtilisateur;
+    Button ajouterCircuit;
+    String verifierAdmin;
 
   //  private OnItemClickListener listener;
 
@@ -39,9 +41,21 @@ public class MainActivity extends AppCompatActivity  {
         circuitRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         connecterUtilisateur=(Button) this.findViewById(R.id.bouton_signIn);
-    //   CircuitDBHelper dbHelper = new CircuitDBHelper(this);
+        ajouterCircuit = (Button) this.findViewById(R.id.bouton_ajouter);
+        ajouterCircuit.setVisibility(View.INVISIBLE);
 
-     //   mDb = dbHelper.getWritableDatabase();
+        if(getIntent()!=null) {
+            Intent i = getIntent();
+            Bundle bd = i.getExtras();
+            if (bd != null) {
+                verifierAdmin = (String) bd.get("EXTRA_CONNECT");
+                if (verifierAdmin == "admin") {
+                    ajouterCircuit.setVisibility(View.VISIBLE);
+                    CircuitDataTemp.insererAdmin(CircuitDBHelper.getInstance(this).getWritableDatabase());
+                }
+            }
+        }
+
       CircuitDataTemp.insererData(CircuitDBHelper.getInstance(this).getWritableDatabase());//
       Cursor cursor = obtenirCircuit();
       cAdapter = new CircuitAdapter(this, cursor); //, listener

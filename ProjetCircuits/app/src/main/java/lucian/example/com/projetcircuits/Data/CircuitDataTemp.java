@@ -126,4 +126,38 @@ public class CircuitDataTemp {
         }
 
     }
+
+    public static void insererAdmin(SQLiteDatabase db) {
+        if (db == null) {
+            return;
+        }
+
+        List<ContentValues> list = new ArrayList<ContentValues>();
+
+        ContentValues cv = new ContentValues();
+        cv.put(CircuitContrat.Admin.COLONNE_IS_ADMIN, "admin");
+
+        list.add(cv);
+
+        try
+        {
+            db.beginTransaction();
+            //clear the table first
+            db.delete (CircuitContrat.Admin.NOM_TABLE,null,null);
+            //go through the list and add one by one
+            for(ContentValues c:list){
+                db.insert(CircuitContrat.Admin.NOM_TABLE, null, c);
+            }
+            db.setTransactionSuccessful();
+        }
+        catch (SQLException e) {
+            //too bad :(
+        }
+        finally
+        {
+            db.endTransaction();
+        }
+
+
+    }
 }

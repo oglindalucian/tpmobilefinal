@@ -36,7 +36,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void userLogin() {
-        String nomUtilisateur = username.getText().toString().trim();
+        final String nomUtilisateur = username.getText().toString().trim();
         String motPasse = password.getText().toString().trim();
         if(nomUtilisateur.isEmpty()) {
             username.setError("Entrez le courriel");
@@ -67,13 +67,18 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                            //enlever les contraintes
+                            if(nomUtilisateur=="oglindalucian@gmail.com") {
+                                Intent i = new Intent(SignIn.this, MainActivity.class);
+                                i.putExtra("EXTRA_CONNECT", "admin");
+                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(i);
+                            } else {
+                                Intent i = new Intent(SignIn.this, MainActivity.class);
+                                i.putExtra("EXTRA_CONNECT", "not_admin");
+                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(i);
+                            }
 
-                            /*
-                            Intent i = new Intent(this, another.class);
-                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                            startActivity(i)
-                            */
 
                         } else {
                             Toast.makeText(SignIn.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

@@ -96,4 +96,10 @@ public class CircuitContrat {
         public static final String COLONNE_CODE_PROMO = "codePromo";
 
     }
+
+    public static final class Admin implements BaseColumns {
+        public static final String NOM_TABLE = "admin";
+        public static final String COLONNE_IS_ADMIN = "isAdmin";
+
+    }
 }

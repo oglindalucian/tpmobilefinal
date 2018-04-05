@@ -58,6 +58,12 @@ public class CircuitDBHelper extends SQLiteOpenHelper {
 
             "); ";
 
+    final String SQL_CREATE_ADMIN_TABLE = "CREATE TABLE " +
+            CircuitContrat.Admin.NOM_TABLE + " (" +
+            CircuitContrat.Admin._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            CircuitContrat.Admin.COLONNE_IS_ADMIN + " TEXT " +
+            "); ";
+
     /*
     public CircuitDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -87,6 +93,7 @@ public class CircuitDBHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_CIRCUIT_TABLE);
         db.execSQL(SQL_CREATE_ETAPE_TABLE);
         db.execSQL(SQL_CREATE_JOUR_TABLE);
+        db.execSQL(SQL_CREATE_ADMIN_TABLE);
     }
 
     @Override
@@ -95,6 +102,7 @@ public class CircuitDBHelper extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Circuit.NOM_TABLE);
             db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Etape.NOM_TABLE);
             db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Jour.NOM_TABLE);
+            db.execSQL("DROP TABLE IF EXISTS " + CircuitContrat.Admin.NOM_TABLE);
             onCreate(db);
         }
     }
