@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:fitsSystemWindows="true">
+
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -67,6 +64,7 @@
             android:background="#00F"
             android:onClick="ajouterCircuit"
             android:layout_marginLeft="30dp"
+
             />
 
         <Button
@@ -105,4 +103,4 @@
 
 </RelativeLayout>
 
-</ScrollView>
+

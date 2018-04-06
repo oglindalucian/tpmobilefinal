@@ -67,17 +67,19 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
+                          /*
                             if(nomUtilisateur=="oglindalucian@gmail.com") {
                                 Intent i = new Intent(SignIn.this, MainActivity.class);
                                 i.putExtra("EXTRA_CONNECT", "admin");
                                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(i);
-                            } else {
+                            } else { */
+
                                 Intent i = new Intent(SignIn.this, MainActivity.class);
-                                i.putExtra("EXTRA_CONNECT", "nomUtilisateur");
+                                i.putExtra("EXTRA_CONNECT", nomUtilisateur);
                                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(i);
-                            }
+                            //  }
 
 
                         } else {

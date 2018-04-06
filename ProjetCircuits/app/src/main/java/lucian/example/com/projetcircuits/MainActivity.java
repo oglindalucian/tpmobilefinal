@@ -1,5 +1,6 @@
 package lucian.example.com.projetcircuits;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity  {
         msgBienvenu.setText("Bienvenu sur notre application des circuits!");
         connecterUtilisateur=(Button) this.findViewById(R.id.bouton_signIn);
         ajouterCircuit = (Button) this.findViewById(R.id.bouton_ajouter);
-        ajouterCircuit.setVisibility(View.INVISIBLE);
+        ajouterCircuit.setVisibility(View.GONE);
 
         if(getIntent()!=null) {
             Intent i = getIntent();
@@ -54,14 +55,16 @@ public class MainActivity extends AppCompatActivity  {
             if (bd != null) {
                 verifierAdmin = (String) bd.get("EXTRA_CONNECT");
                 msgBienvenu.setText("Bienvenu " + verifierAdmin + "!");
-                if (verifierAdmin == "admin") {
-                    ajouterCircuit.setVisibility(View.VISIBLE);
-                    CircuitDataTemp.insererAdmin(CircuitDBHelper.getInstance(this).getWritableDatabase());
-                } else {
-                    ContentValues cv = new ContentValues();
-                    cv.put(CircuitContrat.Login.COLONNE_LOGIN, verifierAdmin);
-                    CircuitDBHelper.getInstance(this).getWritableDatabase().insert(CircuitContrat.Login.NOM_TABLE, null, cv);
+                if (verifierAdmin.compareTo("oglindalucian@gmail.com")==0) {
+                          ajouterCircuit.setVisibility(View.VISIBLE);
+                          connecterUtilisateur.setVisibility(View.GONE);
+                       CircuitDataTemp.insererAdmin(CircuitDBHelper.getInstance(this).getWritableDatabase());
                 }
+                else {
+                  //  ContentValues cv = new ContentValues();
+                  //  cv.put(CircuitContrat.Login.COLONNE_LOGIN, verifierAdmin);
+                  //  CircuitDBHelper.getInstance(this).getWritableDatabase().insert(CircuitContrat.Login.NOM_TABLE, null, cv);
+               }
             }
         }
 

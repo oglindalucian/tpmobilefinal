@@ -127,6 +127,7 @@ public class CircuitDataTemp {
 
     }
 
+
     public static void insererAdmin(SQLiteDatabase db) {
         if (db == null) {
             return;

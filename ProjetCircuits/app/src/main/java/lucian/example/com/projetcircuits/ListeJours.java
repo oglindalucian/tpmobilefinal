@@ -43,7 +43,7 @@ public class ListeJours extends AppCompatActivity {
         joursRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         ajouterJour = (Button)this.findViewById(R.id.bouton_ajouter);
-        ajouterJour.setVisibility(View.INVISIBLE);
+      //  ajouterJour.setVisibility(View.INVISIBLE);
 
         msgBienvenu = (TextView)this.findViewById(R.id.bienvenu);
         msgBienvenu.setText("Bienvenu sur notre application des circuits!");
@@ -53,6 +53,7 @@ public class ListeJours extends AppCompatActivity {
         joursRecyclerView.setAdapter(jAdapter);
 
         SQLiteDatabase db = CircuitDBHelper.getInstance(this).getWritableDatabase();
+
         if((db.rawQuery("SELECT isAdmin FROM admin", null))!=null) {
             Cursor cursor2 = db.rawQuery("SELECT isAdmin FROM admin", null);
 
@@ -65,24 +66,25 @@ public class ListeJours extends AppCompatActivity {
                 //db.close();
             }
 
-            if (verifierAdmin == "admin") {
+            if (verifierAdmin.compareTo("admin")==0) {
                 ajouterJour.setVisibility(View.VISIBLE);
+                msgBienvenu.setText("Bienvenu ADMIN!");
             }
         }
-
+/*
         if((db.rawQuery("SELECT * FROM connecter", null))!=null) {
             Cursor cursor3 = db.rawQuery("SELECT * FROM connecter", null);
 
             if (cursor3.getCount() > 0) {
                 cursor3.moveToFirst();
-                do {
+             //   do {
                     nomUtilisateur = cursor3.getString(cursor3.getColumnIndex("loginUser"));
-                } while (1>1000);
+            //    } while (1>1000);
                 cursor3.close();
                 // db.close();
                 msgBienvenu.setText("Bienvenu " + nomUtilisateur + "!");
             }
-        }
+        }   */
     }
 
     public void ajouterJour(View view) {

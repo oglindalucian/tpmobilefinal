@@ -45,7 +45,7 @@ public class ListeEtapes extends AppCompatActivity {
         etapesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         ajouterEtape = (Button) this.findViewById(R.id.bouton_ajouter);
-        ajouterEtape.setVisibility(View.INVISIBLE);
+        ajouterEtape.setVisibility(View.GONE);
 
         msgBienvenu = (TextView)this.findViewById(R.id.bienvenu);
         msgBienvenu.setText("Bienvenu sur notre application des circuits!");
@@ -60,31 +60,32 @@ public class ListeEtapes extends AppCompatActivity {
 
             if (cursor2.getCount() > 0) {
                 cursor2.moveToFirst();
-                do {
+               // do {
                     verifierAdmin = cursor2.getString(cursor2.getColumnIndex("isAdmin"));
-                } while (1>1000);
+               // } while (1>1000);
                 cursor2.close();
                // db.close();
             }
 
-            if (verifierAdmin == "admin") {
+            if (verifierAdmin.compareTo("admin")==0) {
                 ajouterEtape.setVisibility(View.VISIBLE);
+                msgBienvenu.setText("Bienvenu ADMIN!");
             }
         }
-
+/*
         if((db.rawQuery("SELECT * FROM connecter", null))!=null) {
-            Cursor cursor3 = db.rawQuery("SELECT * FROM connecter", null);
+          Cursor cursor3 = db.rawQuery("SELECT * FROM connecter", null);
 
             if (cursor3.getCount() > 0) {
                 cursor3.moveToFirst();
-                do {
+              //  do {
                     nomUtilisateur = cursor3.getString(cursor3.getColumnIndex("loginUser"));
-                } while (1>1000);
+             //   } while (1>1000);
                 cursor3.close();
                // db.close();
                 msgBienvenu.setText("Bienvenu " + nomUtilisateur + "!");
             }
-        }
+        }  */
 
     }
 
