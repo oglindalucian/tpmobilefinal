@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import lucian.example.com.projetcircuits.Data.CircuitContrat;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity  {
     Button connecterUtilisateur;
     Button ajouterCircuit;
     String verifierAdmin;
+    TextView msgBienvenu;
 
   //  private OnItemClickListener listener;
 
@@ -40,6 +42,8 @@ public class MainActivity extends AppCompatActivity  {
         circuitRecyclerView = (RecyclerView) this.findViewById(R.id.vue_les_circuits);
         circuitRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        msgBienvenu = (TextView)this.findViewById(R.id.bienvenu);
+        msgBienvenu.setText("Bienvenu sur notre application des circuits!");
         connecterUtilisateur=(Button) this.findViewById(R.id.bouton_signIn);
         ajouterCircuit = (Button) this.findViewById(R.id.bouton_ajouter);
         ajouterCircuit.setVisibility(View.INVISIBLE);
@@ -49,9 +53,14 @@ public class MainActivity extends AppCompatActivity  {
             Bundle bd = i.getExtras();
             if (bd != null) {
                 verifierAdmin = (String) bd.get("EXTRA_CONNECT");
+                msgBienvenu.setText("Bienvenu " + verifierAdmin + "!");
                 if (verifierAdmin == "admin") {
                     ajouterCircuit.setVisibility(View.VISIBLE);
                     CircuitDataTemp.insererAdmin(CircuitDBHelper.getInstance(this).getWritableDatabase());
+                } else {
+                    ContentValues cv = new ContentValues();
+                    cv.put(CircuitContrat.Login.COLONNE_LOGIN, verifierAdmin);
+                    CircuitDBHelper.getInstance(this).getWritableDatabase().insert(CircuitContrat.Login.NOM_TABLE, null, cv);
                 }
             }
         }

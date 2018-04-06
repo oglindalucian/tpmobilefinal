@@ -74,7 +74,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
                                 startActivity(i);
                             } else {
                                 Intent i = new Intent(SignIn.this, MainActivity.class);
-                                i.putExtra("EXTRA_CONNECT", "not_admin");
+                                i.putExtra("EXTRA_CONNECT", "nomUtilisateur");
                                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(i);
                             }

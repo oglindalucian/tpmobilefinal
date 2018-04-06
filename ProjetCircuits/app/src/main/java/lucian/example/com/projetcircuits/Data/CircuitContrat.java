@@ -102,4 +102,10 @@ public class CircuitContrat {
         public static final String COLONNE_IS_ADMIN = "isAdmin";
 
     }
+
+    public static final class Login implements BaseColumns {
+        public static final String NOM_TABLE = "connecter";
+        public static final String COLONNE_LOGIN = "loginUser";
+
+    }
 }

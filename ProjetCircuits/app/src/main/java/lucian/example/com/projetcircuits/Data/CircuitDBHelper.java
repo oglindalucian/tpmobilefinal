@@ -64,6 +64,12 @@ public class CircuitDBHelper extends SQLiteOpenHelper {
             CircuitContrat.Admin.COLONNE_IS_ADMIN + " TEXT " +
             "); ";
 
+    final String SQL_CREATE_LOGIN_TABLE = "CREATE TABLE " +
+            CircuitContrat.Login.NOM_TABLE + " (" +
+            CircuitContrat.Login._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            CircuitContrat.Login.COLONNE_LOGIN + " TEXT " +
+            "); ";
+
     /*
     public CircuitDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import lucian.example.com.projetcircuits.Data.CircuitContrat;
 import lucian.example.com.projetcircuits.Data.CircuitDBHelper;
@@ -21,6 +22,8 @@ public class ListeJours extends AppCompatActivity {
     long idEtape;
     Button ajouterJour;
     String verifierAdmin;
+    String nomUtilisateur;
+    TextView msgBienvenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,9 @@ public class ListeJours extends AppCompatActivity {
         ajouterJour = (Button)this.findViewById(R.id.bouton_ajouter);
         ajouterJour.setVisibility(View.INVISIBLE);
 
+        msgBienvenu = (TextView)this.findViewById(R.id.bienvenu);
+        msgBienvenu.setText("Bienvenu sur notre application des circuits!");
+
         Cursor cursor = obtenirJour();
         jAdapter = new JourAdapter(this, cursor);
         joursRecyclerView.setAdapter(jAdapter);
@@ -56,11 +62,25 @@ public class ListeJours extends AppCompatActivity {
                     verifierAdmin = cursor2.getString(cursor2.getColumnIndex("isAdmin"));
                 } while (cursor2.moveToNext());
                 cursor2.close();
-                db.close();
+                //db.close();
             }
 
             if (verifierAdmin == "admin") {
                 ajouterJour.setVisibility(View.VISIBLE);
+            }
+        }
+
+        if((db.rawQuery("SELECT * FROM connecter", null))!=null) {
+            Cursor cursor3 = db.rawQuery("SELECT * FROM connecter", null);
+
+            if (cursor3.getCount() > 0) {
+                cursor3.moveToFirst();
+                do {
+                    nomUtilisateur = cursor3.getString(cursor3.getColumnIndex("loginUser"));
+                } while (1>1000);
+                cursor3.close();
+                // db.close();
+                msgBienvenu.setText("Bienvenu " + nomUtilisateur + "!");
             }
         }
     }
