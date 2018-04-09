@@ -81,7 +81,7 @@ public class EtapesAdapter extends RecyclerView.Adapter <EtapesAdapter.EtapeView
             holder.photo.setImageBitmap(image);
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
-            Toast.makeText(mContext, "Image introuvable", Toast.LENGTH_LONG);
+            Toast.makeText(mContext, R.string.img_introuvable, Toast.LENGTH_LONG);
         }
 
         final long id = mCursor.getLong(mCursor.getColumnIndex(CircuitContrat.Etape._ID));

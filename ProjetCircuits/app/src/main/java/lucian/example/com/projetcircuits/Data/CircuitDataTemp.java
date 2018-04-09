@@ -162,5 +162,111 @@ public class CircuitDataTemp {
 
     }
 
+    public static void ajouterUnCourriel(SQLiteDatabase db, String email) {
+        if (db == null) {
+            return;
+        }
+
+        List<ContentValues> list = new ArrayList<ContentValues>();
+
+        ContentValues cv = new ContentValues();
+        cv.put(CircuitContrat.CourrielUtilisateur.COLONNE_COURRIEL, email);
+
+        list.add(cv);
+
+        try
+        {
+            db.beginTransaction();
+            //clear the table first
+            db.delete (CircuitContrat.CourrielUtilisateur.NOM_TABLE,null,null);
+            //go through the list and add one by one
+            for(ContentValues c:list){
+                db.insert(CircuitContrat.CourrielUtilisateur.NOM_TABLE, null, c);
+            }
+            db.setTransactionSuccessful();
+        }
+        catch (SQLException e) {
+            //too bad :(
+        }
+        finally
+        {
+            db.endTransaction();
+        }
+    }
+
+    public static void ajouterListeCourriels(SQLiteDatabase db, String email) {
+        if (db == null) {
+            return;
+        }
+
+        List<ContentValues> list = new ArrayList<ContentValues>();
+
+        ContentValues cv = new ContentValues();
+        cv.put(CircuitContrat.CourrielUtilisateur.COLONNE_COURRIEL, email);
+
+        list.add(cv);
+
+        try
+        {
+            db.beginTransaction();
+            //clear the table first
+           // db.delete (CircuitContrat.CourrielUtilisateur.NOM_TABLE,null,null);
+            //go through the list and add one by one
+            for(ContentValues c:list){
+                db.insert(CircuitContrat.CourrielUtilisateur.NOM_TABLE, null, c);
+            }
+            db.setTransactionSuccessful();
+        }
+        catch (SQLException e) {
+            //too bad :(
+        }
+        finally
+        {
+            db.endTransaction();
+        }
+    }
+
+
+
+    public static void deconnexion(SQLiteDatabase db) {
+        if (db == null) {
+            return;
+        }
+
+        try
+        {
+            db.beginTransaction();
+            //clear the table first
+            db.delete (CircuitContrat.Admin.NOM_TABLE,null,null);
+            //go through the list and add one by one
+            db.setTransactionSuccessful();
+        }
+        catch (SQLException e) {
+            //too bad :(
+        }
+        finally
+        {
+            db.endTransaction();
+        }
+
+        try
+        {
+            db.beginTransaction();
+            //clear the table first
+            db.delete (CircuitContrat.Login.NOM_TABLE,null,null);
+            //go through the list and add one by one
+            db.setTransactionSuccessful();
+        }
+        catch (SQLException e) {
+            //too bad :(
+        }
+        finally
+        {
+            db.endTransaction();
+        }
+    }
+
+
+
 
 }

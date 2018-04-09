@@ -87,9 +87,9 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
         holder.nombreMax.setText(String.valueOf(max));
         holder.nombrePlacesReservees.setText(String.valueOf(res));
         if(etat==1)
-            holder.etatTextView.setText("actif");
+            holder.etatTextView.setText(R.string.actif);
         if(etat==0)
-            holder.etatTextView.setText("inactif");
+            holder.etatTextView.setText(R.string.inactif);
         holder.dateDepart.setText(String.valueOf(depart));
         holder.dateArrivee.setText(String.valueOf(arrivee));
       //  holder.photo.setText(String.valueOf(photo));
@@ -111,7 +111,7 @@ public class CircuitAdapter extends RecyclerView.Adapter <CircuitAdapter.Circuit
             holder.photo.setImageBitmap(image);
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
-            Toast.makeText(mContext, "Image introuvable", Toast.LENGTH_LONG);
+            Toast.makeText(mContext, R.string.img_introuvable, Toast.LENGTH_LONG);
         }
 
 

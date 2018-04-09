@@ -10,12 +10,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import lucian.example.com.projetcircuits.Data.CircuitContrat;
 import lucian.example.com.projetcircuits.Data.CircuitDBHelper;
 
-public class ListeEtapes extends AppCompatActivity {
+public class ListeEtapes extends AppCompatActivity implements View.OnClickListener {
     public static final int TEXT_REQUEST = 10;
     private EtapesAdapter eAdapter;
    // private SQLiteDatabase mDb;
@@ -23,7 +24,11 @@ public class ListeEtapes extends AppCompatActivity {
    Button ajouterEtape;
    String verifierAdmin;
    String nomUtilisateur;
-   TextView msgBienvenu;
+  // TextView msgBienvenu;
+  //  Button liste;
+  //  Button arriere;
+   // ImageView leLogo;
+    RecyclerView etapesRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,19 +45,24 @@ public class ListeEtapes extends AppCompatActivity {
             idCircuit = (long) bd.get("EXTRA_ID_CIRCUIT");
         }
 
-        RecyclerView etapesRecyclerView;
+
         etapesRecyclerView = (RecyclerView) this.findViewById(R.id.vue_les_etapes);
         etapesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+     //   liste = (Button) this.findViewById(R.id.bouton_showListe);
+    //    arriere = (Button) this.findViewById(R.id.bouton_arriere);
+      //  leLogo = (ImageView)this.findViewById(R.id.img_logo);
         ajouterEtape = (Button) this.findViewById(R.id.bouton_ajouter);
         ajouterEtape.setVisibility(View.GONE);
+      //  login = (Button) this.findViewById(R.id.bouton_ajouter);
 
-        msgBienvenu = (TextView)this.findViewById(R.id.bienvenu);
-        msgBienvenu.setText("Bienvenu sur notre application des circuits!");
+      //  msgBienvenu = (TextView)this.findViewById(R.id.bienvenu);
+     //   msgBienvenu.setText(R.string.bienvenu1);
 
         Cursor cursor = obtenirEtape();
         eAdapter = new EtapesAdapter(this, cursor);
         etapesRecyclerView.setAdapter(eAdapter);
+     //   etapesRecyclerView.setVisibility(View.GONE);
 
         SQLiteDatabase db = CircuitDBHelper.getInstance(this).getWritableDatabase();
         if((db.rawQuery("SELECT isAdmin FROM admin", null))!=null) {
@@ -66,13 +76,14 @@ public class ListeEtapes extends AppCompatActivity {
                 cursor2.close();
                // db.close();
             }
-
-            if (verifierAdmin.compareTo("admin")==0) {
-                ajouterEtape.setVisibility(View.VISIBLE);
-                msgBienvenu.setText("Bienvenu ADMIN!");
+            if(verifierAdmin!=null) {
+                if (verifierAdmin.compareTo("admin") == 0) {
+                    ajouterEtape.setVisibility(View.VISIBLE);
+                  //  msgBienvenu.setText(R.string.bienvenu2 +" ADMIN!");
+                }
             }
         }
-/*
+
         if((db.rawQuery("SELECT * FROM connecter", null))!=null) {
           Cursor cursor3 = db.rawQuery("SELECT * FROM connecter", null);
 
@@ -83,19 +94,17 @@ public class ListeEtapes extends AppCompatActivity {
              //   } while (1>1000);
                 cursor3.close();
                // db.close();
-                msgBienvenu.setText("Bienvenu " + nomUtilisateur + "!");
+              //  msgBienvenu.setText(R.string.bienvenu2 + " " + nomUtilisateur + "!");
+                ajouterEtape.setVisibility(View.GONE);
             }
-        }  */
+        }
+
+     //   liste.setOnClickListener(this);
+     //   arriere.setOnClickListener(this);
 
     }
 
     public void ajouterEtape(View view) {
-     /*   Intent i = getIntent();
-        Bundle bd = i.getExtras();
-        if(bd != null)
-        {
-            idCircuit = (long) bd.get("EXTRA_ID_CIRCUIT");
-        } */
         Intent intent = new Intent(this, AjouterEtape.class);
         intent.putExtra("EXTRA_LE_ID_CIRCUIT", idCircuit);
         startActivityForResult(intent, TEXT_REQUEST);
@@ -152,5 +161,41 @@ public class ListeEtapes extends AppCompatActivity {
 
         return CircuitDBHelper.getInstance(this).getWritableDatabase().insert(CircuitContrat.Etape.NOM_TABLE, null, cv);
 
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()) {
+            /*
+            case R.id.bouton_showListe:
+                leLogo.setVisibility(View.GONE);
+                msgBienvenu.setVisibility(View.GONE);
+
+                liste.setVisibility(View.GONE);
+                arriere.setVisibility(View.VISIBLE);
+                etapesRecyclerView.setVisibility(View.VISIBLE);
+
+                break;
+
+            case R.id.bouton_arriere:
+                leLogo.setVisibility(View.VISIBLE);
+                msgBienvenu.setVisibility(View.VISIBLE);
+                liste.setVisibility(View.VISIBLE);
+                arriere.setVisibility(View.GONE);
+                etapesRecyclerView.setVisibility(View.GONE);
+
+                /*
+                listeCourriels.setVisibility(View.VISIBLE);
+                ajouterCircuit.setVisibility(View.VISIBLE);
+                connecterUtilisateur.setVisibility(View.VISIBLE);
+                logOutBtn.setVisibility(View.VISIBLE);  */
+/*
+                finish();
+                startActivity(getIntent());
+
+
+                break; */
+        }
     }
 }

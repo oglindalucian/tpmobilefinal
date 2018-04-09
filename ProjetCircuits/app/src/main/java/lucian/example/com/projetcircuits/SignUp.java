@@ -17,6 +17,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
+import lucian.example.com.projetcircuits.Data.CircuitDBHelper;
+import lucian.example.com.projetcircuits.Data.CircuitDataTemp;
+
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     EditText username;
@@ -41,7 +44,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void registerUser() {
-        String nomUtilisateur = username.getText().toString().trim();
+       final String nomUtilisateur = username.getText().toString().trim();
         String motPasse = password.getText().toString().trim();
         if(nomUtilisateur.isEmpty()) {
             username.setError("Entrez le courriel");
@@ -71,13 +74,14 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    Toast.makeText(SignUp.this, "Inscription effectue avec success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, R.string.inscription_succes, Toast.LENGTH_SHORT).show();
+                    CircuitDataTemp.ajouterListeCourriels(CircuitDBHelper.getInstance(SignUp.this).getWritableDatabase(), nomUtilisateur);
                     Intent i = new Intent(SignUp.this, SignIn.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
                 } else {
                     if(task.getException() instanceof FirebaseAuthUserCollisionException) {
-                        Toast.makeText(SignUp.this, "Vous etes deja enregistre!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUp.this, R.string.deja_enregistre, Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(SignUp.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }

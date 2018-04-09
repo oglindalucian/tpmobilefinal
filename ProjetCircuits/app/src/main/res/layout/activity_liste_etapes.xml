@@ -16,11 +16,7 @@
             android:layout_alignParentTop="true"
             >
 
-            <ImageView android:src="@drawable/logo"
-                android:layout_width="wrap_content"
-                android:layout_height="72dp"
-                android:layout_marginBottom="24dp"
-                android:layout_gravity="center_horizontal" />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -29,18 +25,10 @@
                 android:layout_weight="1"
                 android:fontFamily="sans-serif"
                 android:textSize="24sp"
-                android:text="Liste des etapes"
+                android:text="@string/liste_etapes"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif"
-                android:textSize="16sp"
-                android:text=""
-                android:id="@+id/bienvenu"/>
+
 
         </LinearLayout>
 
@@ -57,7 +45,7 @@
             android:id="@+id/bouton_ajouter"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="AJOUTER ETAPE"
+            android:text="@string/ajouter_etape"
             android:background="#00F"
             android:onClick="ajouterEtape"
             android:layout_marginLeft="30dp"
@@ -66,6 +54,8 @@
 
 
     </LinearLayout>
+
+
 
 
 

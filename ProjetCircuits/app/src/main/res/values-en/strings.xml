@@ -1,0 +1,134 @@
+<resources>
+    <string name="app_name">Circuit Project</string>
+    <string name="liste_circuits">List of circuits</string>
+    <string name="liste_courriels">USERS LIST</string>
+    <string name="ajouter_circuit">Add circuit</string>
+    <string name="connexion">Log in</string>
+    <string name="deconnexion">Log out</string>
+    <string name="bienvenu1">Welcome to our circuit application!</string>
+    <string name="bienvenu2">Welcome </string>
+    <string name="msg_vous_vous_etes_deconnecte">You are logged out</string>
+    <string name="courriel">Email</string>
+    <string name="mdp">Password</string>
+    <string name="creer_compte">No account? Sign up!</string>
+    <string name="entrez_courriel">Enter the email address!</string>
+    <string name="entrez_courriel_valide">Enter a valid email address!</string>
+    <string name="deja_inscrit_connectez_vous">Already registered? Login!</string>
+    <string name="inscription_succes">Registration completed successfully</string>
+    <string name="deja_enregistre">You are already registered!</string>
+    <string name="actif">active</string>
+    <string name="inactif">inactive</string>
+    <string name="img_introuvable">Image not found</string>
+    <string name="nom_circuit">Circuit name:</string>
+    <string name="nb_min">Minimum number of places:</string>
+    <string name="nb_max">Maximum number of places:</string>
+    <string name="nb_res">Number of reserved places:</string>
+    <string name="etat">State:</string>
+    <string name="date_depart">Departure date:</string>
+    <string name="date_arrivee">Arrival date:</string>
+    <string name="prix">Price:</string>
+    <string name="guide">Guide:</string>
+    <string name="transport">Transportation:</string>
+    <string name="choisir_image">Choose an image:</string>
+    <string name="choisir">Choose</string>
+    <string name="le_prix_doit_etre_un_nombre">The price must be a number</string>
+    <string name="nom_etape">Stage name:</string>
+    <string name="nb_jours">Number of days:</string>
+    <string name="ajouter_etape">Add stage:</string>
+    <string name="nom_jour">Day\'s name:</string>
+    <string name="nom_ville">Town/city name:</string>
+    <string name="hotel">Hotel:</string>
+    <string name="ajouter_jour">Add day</string>
+    <string name="liste_etapes">Stage list</string>
+    <string name="liste_jours">Day list</string>
+    <string name="liste_utilisateurs">Users list</string>
+    <string name="nom_circuit2">Circuit Name</string>
+    <string name="nom_etape2">Stage Name</string>
+    <string name="nb_min_pers">Minimum number of tourists:</string>
+    <string name="nb_max_pers">Maximum number of tourists:</string>
+    <string name="nb_places_res">Number of reserved places:</string>
+    <string name="id_circuit">Circuit ID:</string>
+    <string name="id_etape">Stage ID:</string>
+    <string name="langue">Language</string>
+    <string name="anglais">English</string>
+    <string name="francais">French</string>
+    <string name="arriere">Back</string>
+    <string-array name="spinnerEtat">
+        <item>Active</item>
+        <item>Inactive</item>
+    </string-array>
+    <string-array name="spinnerLangue">
+        <item>English</item>
+        <item>French</item>
+    </string-array>
+    <string-array name="spinnerTransport">
+        <item>Plane</item>
+        <item>Bus</item>
+        <item>Boat/ship</item>
+        <item>Train</item>
+    </string-array>
+    <string-array name="spinnerMin">
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+    </string-array>
+    <string-array name="spinnerMax">
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+    </string-array>
+    <string-array name="spinnerRes">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+    </string-array>
+</resources>

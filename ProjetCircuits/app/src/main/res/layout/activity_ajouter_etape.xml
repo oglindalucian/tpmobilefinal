@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:inputType="text"
                 android:layout_weight="1"
-                android:hint="Nom etape:"/>
+                android:hint="@string/nom_etape"/>
 
             <EditText
                 android:id="@+id/nom"
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:inputType="text"
                 android:layout_weight="1"
-                android:hint="Nombre de jours:"/>
+                android:hint="@string/nb_jours"/>
 
 
             <Spinner
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:inputType="text"
                 android:layout_weight="1"
-                android:hint="Date d'arrivee:"/>
+                android:hint="@string/date_arrivee"/>
 
             <EditText
                 android:id="@+id/arrivee"
@@ -98,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:inputType="text"
                 android:layout_weight="1"
-                android:hint="Date de depart:"/>
+                android:hint="@string/date_depart"/>
 
             <EditText
                 android:id="@+id/depart"
@@ -150,13 +150,13 @@
                 android:layout_width="match_parent"
                 android:inputType="text"
                 android:layout_weight="1"
-                android:hint="Choisir une image:"/>
+                android:hint="@string/choisir_image"/>
 
             <Button
                 android:id="@+id/choisir_image"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Choisir"
+                android:text="@string/choisir"
                 />
 
         </LinearLayout>
@@ -175,7 +175,7 @@
             android:id="@+id/add_circuit"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Ajouter etape"
+            android:text="@string/ajouter_etape"
             android:layout_below="@id/imageChoisie"
             android:layout_marginTop="20dp"
             android:onClick="ajouterEtape"/>

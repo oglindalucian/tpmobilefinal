@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:hint="Courriel" />
+                android:hint="@string/courriel" />
         </android.support.design.widget.TextInputLayout>
 
         <!--  Password Label -->
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="Password"/>
+                android:hint="@string/mdp"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton
@@ -57,7 +57,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Deja inscrit? Connectez-vous!"
+            android:text="@string/deja_inscrit_connectez_vous"
             android:gravity="center"
             android:textSize="16dip"/>
 

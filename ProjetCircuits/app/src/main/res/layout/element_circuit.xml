@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:layout_marginBottom="16dp">
+    android:layout_margin="16dp">
 
     <ImageView
         android:id="@+id/photoCircuit"
@@ -22,7 +21,7 @@
         android:layout_weight="1"
         android:fontFamily="sans-serif"
         android:textSize="32sp"
-        android:text="Nom Circuit"
+        android:text="@string/nom_circuit2"
         android:layout_centerHorizontal="true"/>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -40,7 +39,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="16sp"
-            android:text="Nombre minimal de personnes:"/>
+            android:text="@string/nb_min_pers"/>
 
         <TextView
             android:id="@+id/nombreMin_text_view"
@@ -69,7 +68,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="16sp"
-            android:text="Nombre maximal de personnes:"/>
+            android:text="@string/nb_max_pers"/>
 
     <TextView
         android:id="@+id/nombreMax_text_view"
@@ -98,7 +97,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="16sp"
-            android:text="Nombre de places reservees:"/>
+            android:text="@string/nb_places_res"/>
 
         <TextView
             android:id="@+id/nombrePlacesReservees_text_view"
@@ -127,16 +126,14 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="16sp"
-            android:text="Etat:"/>
+            android:text="@string/etat"/>
 
         <TextView
             android:id="@+id/etat_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
-            android:background="@android:color/holo_blue_dark"
             android:gravity="center"
-            android:textColor="@android:color/white"
             android:textSize="16sp"
             android:text="1"/>
 
@@ -157,7 +154,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="16sp"
-            android:text="Date de depart:"/>
+            android:text="@string/date_depart"/>
 
         <TextView
             android:id="@+id/dateDepart_text_view"
@@ -187,7 +184,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="16sp"
-            android:text="Date d'arrivee:"/>
+            android:text="@string/date_arrivee"/>
 
         <TextView
         android:id="@+id/dateArrivee_text_view"
@@ -216,7 +213,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="16sp"
-            android:text="Prix:"/>
+            android:text="@string/prix"/>
 
         <TextView
             android:id="@+id/prixCircuit_text_view"
@@ -245,7 +242,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="16sp"
-            android:text="Guide:"/>
+            android:text="@string/guide"/>
 
         <TextView
             android:id="@+id/guide_text_view"
@@ -274,7 +271,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="16sp"
-            android:text="Transport:"/>
+            android:text="@string/transport"/>
 
         <TextView
             android:id="@+id/transport_text_view"
@@ -284,7 +281,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="16sp"
-            android:text="avion"/>
+            android:text=""/>
 
     </LinearLayout>
 

@@ -23,7 +23,7 @@ public class ListeJours extends AppCompatActivity {
     Button ajouterJour;
     String verifierAdmin;
     String nomUtilisateur;
-    TextView msgBienvenu;
+  //  TextView msgBienvenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +43,11 @@ public class ListeJours extends AppCompatActivity {
         joursRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         ajouterJour = (Button)this.findViewById(R.id.bouton_ajouter);
+        ajouterJour.setVisibility(View.GONE);
       //  ajouterJour.setVisibility(View.INVISIBLE);
 
-        msgBienvenu = (TextView)this.findViewById(R.id.bienvenu);
-        msgBienvenu.setText("Bienvenu sur notre application des circuits!");
+    //    msgBienvenu = (TextView)this.findViewById(R.id.bienvenu);
+    //    msgBienvenu.setText(R.string.bienvenu1);
 
         Cursor cursor = obtenirJour();
         jAdapter = new JourAdapter(this, cursor);
@@ -65,13 +66,14 @@ public class ListeJours extends AppCompatActivity {
                 cursor2.close();
                 //db.close();
             }
-
-            if (verifierAdmin.compareTo("admin")==0) {
-                ajouterJour.setVisibility(View.VISIBLE);
-                msgBienvenu.setText("Bienvenu ADMIN!");
+            if(verifierAdmin!=null) {
+                if (verifierAdmin.compareTo("admin") == 0) {
+                    ajouterJour.setVisibility(View.VISIBLE);
+                 //   msgBienvenu.setText(R.string.bienvenu2 +" ADMIN!");
+                }
             }
         }
-/*
+
         if((db.rawQuery("SELECT * FROM connecter", null))!=null) {
             Cursor cursor3 = db.rawQuery("SELECT * FROM connecter", null);
 
@@ -82,9 +84,10 @@ public class ListeJours extends AppCompatActivity {
             //    } while (1>1000);
                 cursor3.close();
                 // db.close();
-                msgBienvenu.setText("Bienvenu " + nomUtilisateur + "!");
+            //    msgBienvenu.setText(R.string.bienvenu2 + " " + nomUtilisateur + "!");
+                ajouterJour .setVisibility(View.GONE);
             }
-        }   */
+        }
     }
 
     public void ajouterJour(View view) {

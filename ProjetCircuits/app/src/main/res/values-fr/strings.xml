@@ -6,7 +6,7 @@
     <string name="connexion">Connexion</string>
     <string name="deconnexion">Déconnexion</string>
     <string name="bienvenu1">Bienvenu sur notre application des circuits!</string>
-    <string name="bienvenu2">Bienvenu  </string>
+    <string name="bienvenu2">Bienvenu </string>
     <string name="msg_vous_vous_etes_deconnecte">Vous vous êtes deconnecté</string>
     <string name="courriel">Courriel</string>
     <string name="mdp">Mot de passe</string>
@@ -54,8 +54,8 @@
     <string name="francais">Français</string>
     <string name="arriere">Arrière</string>
     <string-array name="spinnerEtat">
-    <item>Actif</item>
-    <item>Inactif</item>
+        <item>Actif</item>
+        <item>Inactif</item>
     </string-array>
     <string-array name="spinnerLangue">
         <item>Anglais</item>

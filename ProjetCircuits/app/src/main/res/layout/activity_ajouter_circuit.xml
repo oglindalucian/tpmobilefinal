@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:inputType="text"
             android:layout_weight="1"
-            android:hint="Nom circuit:"/>
+            android:hint="@string/nom_circuit"/>
 
         <EditText
             android:id="@+id/nom"
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:inputType="text"
             android:layout_weight="1"
-            android:hint="Nombre places minimum:"/>
+            android:hint="@string/nb_min"/>
 
 
         <Spinner
@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:inputType="text"
             android:layout_weight="1"
-            android:hint="Nombre places maximum:"/>
+            android:hint="@string/nb_max"/>
 
         <Spinner
             android:id="@+id/max"
@@ -98,7 +98,7 @@
             android:layout_width="match_parent"
             android:inputType="text"
             android:layout_weight="1"
-            android:hint="Nombre places reservees:"/>
+            android:hint="@string/nb_res"/>
 
          <Spinner
             android:id="@+id/res"
@@ -123,7 +123,7 @@
             android:layout_width="match_parent"
             android:inputType="text"
             android:layout_weight="1"
-            android:text="Etat:"/>
+            android:text="@string/etat"/>
 
 
         <Spinner
@@ -149,7 +149,7 @@
             android:layout_width="match_parent"
             android:inputType="text"
             android:layout_weight="1"
-            android:hint="Date de depart:"/>
+            android:hint="@string/date_depart"/>
 
         <EditText
             android:id="@+id/depart"
@@ -174,7 +174,7 @@
             android:layout_width="match_parent"
             android:inputType="text"
             android:layout_weight="1"
-            android:hint="Date d'arrivee:"/>
+            android:hint="@string/date_arrivee"/>
 
         <EditText
             android:id="@+id/arrivee"
@@ -224,7 +224,7 @@
             android:layout_width="match_parent"
             android:inputType="text"
             android:layout_weight="1"
-            android:hint="Prix:"/>
+            android:hint="@string/prix"/>
 
         <EditText
             android:id="@+id/prix"
@@ -249,7 +249,7 @@
             android:layout_width="match_parent"
             android:inputType="text"
             android:layout_weight="1"
-            android:hint="Guide:"/>
+            android:hint="@string/guide"/>
 
         <EditText
             android:id="@+id/guide"
@@ -274,7 +274,7 @@
         android:layout_width="match_parent"
         android:inputType="text"
         android:layout_weight="1"
-        android:hint="Transport:"/>
+        android:hint="@string/transport"/>
 
       <Spinner
             android:id="@+id/transport"
@@ -300,13 +300,13 @@
             android:layout_width="match_parent"
             android:inputType="text"
             android:layout_weight="1"
-            android:hint="Choisir une image:"/>
+            android:hint="@string/choisir_image"/>
 
         <Button
             android:id="@+id/choisir_image"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Choisir"
+            android:text="@string/choisir"
            />
 
     </LinearLayout>
@@ -325,7 +325,7 @@
         android:id="@+id/add_circuit"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="Ajouter circuit"
+        android:text="@string/ajouter_circuit"
         android:layout_below="@id/imageChoisie"
         android:layout_marginTop="20dp"
         android:onClick="ajouterCircuit"/>

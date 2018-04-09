@@ -34,7 +34,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="16sp"
-            android:text="Nom ville:"/>
+            android:text="@string/nom_ville"/>
 
         <TextView
             android:id="@+id/nomVille_text_view"
@@ -63,7 +63,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="16sp"
-            android:text="ID Etape:"/>
+            android:text="@string/id_etape"/>
 
         <TextView
             android:id="@+id/idEtape_text_view"
@@ -92,7 +92,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="16sp"
-            android:text="Hotel:"/>
+            android:text="@string/hotel"/>
 
         <TextView
             android:id="@+id/hotel_text_view"

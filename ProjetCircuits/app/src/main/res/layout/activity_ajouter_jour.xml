@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:inputType="text"
                 android:layout_weight="1"
-                android:hint="Nom jour:"/>
+                android:hint="@string/nom_jour"/>
 
             <EditText
                 android:id="@+id/nom"
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:inputType="text"
                 android:layout_weight="1"
-                android:hint="Nom ville:"/>
+                android:hint="@string/nom_ville"/>
 
             <EditText
                 android:id="@+id/nomVille"
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:inputType="text"
                 android:layout_weight="1"
-                android:hint="Hotel:"/>
+                android:hint="@string/hotel"/>
 
             <EditText
                 android:id="@+id/hotel"
@@ -118,7 +118,7 @@
             android:id="@+id/add_jour"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Ajouter jour"
+            android:text="@string/ajouter_jour"
             android:layout_below="@id/layout_restaurant"
             android:layout_marginTop="20dp"
             android:onClick="ajouterJour"/>

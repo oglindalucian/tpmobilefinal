@@ -10,27 +10,67 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/layout_up"
-        android:layout_marginBottom="30dp"
-        android:layout_alignParentTop="true"
-        >
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="horizontal"
+        android:id="@+id/layout_up2"
+        android:layout_alignParentTop="true">
 
         <ImageView android:src="@drawable/logo"
             android:layout_width="wrap_content"
             android:layout_height="72dp"
             android:layout_marginBottom="24dp"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
             android:layout_weight="1"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:text="Liste des circuits"
+            android:id="@+id/img_logo"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="5dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="100dp"
+        android:layout_weight="4">
+
+         <Button
+             android:id="@+id/bouton_anglais"
+             android:layout_height="20dp"
+             android:layout_width="30dp"
+             android:background="@drawable/uk"
+             android:layout_marginLeft="30dp"
+
+
+
+        />
+
+        <Button
+            android:id="@+id/bouton_francais"
+            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:background="@drawable/france"
+            android:layout_marginLeft="30dp"
+
             />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/layout_up"
+        android:layout_below="@id/layout_up2"
+        android:layout_marginBottom="30dp"
+
+        >
+
+
+
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,14 +82,78 @@
             android:text=""
             android:id="@+id/bienvenu"/>
 
+        <Button
+            android:id="@+id/bouton_emailList"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/liste_courriels"
+            android:onClick="listerCourriels"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="20dp"
+
+            />
+
+
+
+
+
     </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_below="@id/layout_up"
+    android:id="@+id/layout_btns"
+    android:layout_marginBottom="30dp"
+    >
+
+
+
+
+    <Button
+        android:id="@+id/bouton_ajouter"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/ajouter_circuit"
+        android:background="#00F"
+        android:onClick="ajouterCircuit"
+        android:layout_marginLeft="30dp"
+
+        />
+
+    <Button
+        android:id="@+id/bouton_signIn"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/connexion"
+        android:background="#00F"
+        android:onClick="signIn"
+        android:layout_marginLeft="30dp"
+
+        />
+
+    <Button
+        android:id="@+id/bouton_logOut"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/deconnexion"
+        android:background="#00F"
+        android:onClick="logOut"
+        android:layout_marginLeft="30dp"
+
+        />
+
+
+
+</LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/layout_up"
-        android:id="@+id/layout_btns"
+        android:layout_below="@id/layout_btns"
+        android:id="@+id/layout_show"
         android:layout_marginBottom="30dp"
         >
 
@@ -57,23 +161,19 @@
 
 
         <Button
-            android:id="@+id/bouton_ajouter"
+            android:id="@+id/bouton_showListe"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="AJOUTER CIRCUIT"
-            android:background="#00F"
-            android:onClick="ajouterCircuit"
+            android:text="@string/liste_circuits"
             android:layout_marginLeft="30dp"
 
             />
 
         <Button
-            android:id="@+id/bouton_signIn"
+            android:id="@+id/bouton_arriere"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Connexion"
-            android:background="#00F"
-            android:onClick="signIn"
+            android:text="@string/arriere"
             android:layout_marginLeft="30dp"
 
             />
@@ -88,7 +188,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_below="@id/layout_btns"
+        android:layout_below="@id/layout_show"
         >
 
         <android.support.v7.widget.RecyclerView

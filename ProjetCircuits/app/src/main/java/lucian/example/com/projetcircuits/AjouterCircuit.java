@@ -85,62 +85,56 @@ public class AjouterCircuit extends AppCompatActivity implements View.OnClickLis
       if(nom.getText().length()==0) {
             return;
         }
-        String nomCircuit = "";
-        int min = -1;
-        int max = -1;
-        int res = -1;
-        int etatCircuit = -1;
+
+        int etatCircuit = 1;
         String etatC="";
-        String departC = "";
-        String arriveeC = "";
-        int prixC = -1;
-        String guideCircuit = "";
-        String  transportC ="";
-        String photoC = "";
 
-        try {
+        if(prix.getText().toString()!="" && isNumeric(prix.getText().toString())) {
+            etatC = etat.getSelectedItem().toString();
+            switch (etatC) {
+                case "Actif":
+                    etatCircuit = 1;
+                    break;
+                case "Inactif":
+                    etatCircuit = 0;
+                    break;
+                default:
+                    etatCircuit = 1;
+            }
 
-            prixC = Integer.parseInt(prix.getText().toString());
+            replyIntent.putExtra("EXTRA_NOM", nom.getText().toString());
+            replyIntent.putExtra("EXTRA_DEPART", depart.getText().toString());
+            replyIntent.putExtra("EXTRA_ARRIVEE", arrivee.getText().toString());
+            replyIntent.putExtra("EXTRA_GUIDE", guide.getText().toString());
+            replyIntent.putExtra("EXTRA_TRANSPORT", transport.getSelectedItem().toString());
+            replyIntent.putExtra("EXTRA_MIN", minPlaces.getSelectedItem().toString()); //Integer.parseInt
+            replyIntent.putExtra("EXTRA_MAX", maxPlaces.getSelectedItem().toString());
+            replyIntent.putExtra("EXTRA_RES", resPlaces.getSelectedItem().toString());
+            replyIntent.putExtra("EXTRA_ETAT", String.valueOf(etatCircuit));
+            replyIntent.putExtra("EXTRA_PRIX", prix.getText().toString());
+            // replyIntent.putExtra("EXTRA_PHOTO", photo.getText().toString());
 
+            setResult(RESULT_OK, replyIntent);
 
+            finish();
+        } else {
+            Toast.makeText(this, R.string.le_prix_doit_etre_un_nombre, Toast.LENGTH_LONG).show();
         }
-        catch (NumberFormatException ex) {
-           Log.e("", "Erreur lors de la conversion en entier" + ex.getMessage());
-          //  Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
-            Toast.makeText(this, "Le prix doit etre un nombre", Toast.LENGTH_LONG).show();
-           // Toast.makeText(this, etat.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
+
+
+    }
+
+    public static boolean isNumeric(String str)
+    {
+        try
+        {
+            double d = Double.parseDouble(str);
         }
-//if(nomCircuit!="" && min!=-1 && max!=-1 && res!=-1 && departC!="" && arriveeC!="" && prixC!=-1
-       // && guideCircuit !="" && transportC !="") {
-          //  if(min<max) {
-                etatC = etat.getSelectedItem().toString();
-                switch(etatC) {
-                    case "Actif": etatCircuit=1; break;
-                    case "Inactif": etatCircuit=0; break;
-                    default: etatCircuit=1;
-                }
-                  //  replyIntent = new Intent();
-                    replyIntent.putExtra("EXTRA_NOM", nom.getText().toString());
-                    replyIntent.putExtra("EXTRA_DEPART", depart.getText().toString());
-                    replyIntent.putExtra("EXTRA_ARRIVEE", arrivee.getText().toString());
-                    replyIntent.putExtra("EXTRA_GUIDE", guide.getText().toString());
-                    replyIntent.putExtra("EXTRA_TRANSPORT", transport.getSelectedItem().toString());
-                    replyIntent.putExtra("EXTRA_MIN", minPlaces.getSelectedItem().toString()); //Integer.parseInt
-                    replyIntent.putExtra("EXTRA_MAX", maxPlaces.getSelectedItem().toString());
-                    replyIntent.putExtra("EXTRA_RES", resPlaces.getSelectedItem().toString());
-                    replyIntent.putExtra("EXTRA_ETAT", String.valueOf(etatCircuit));
-                    replyIntent.putExtra("EXTRA_PRIX", prix.getText().toString());
-                   // replyIntent.putExtra("EXTRA_PHOTO", photo.getText().toString());
-
-                    setResult(RESULT_OK, replyIntent);
-
-                    finish();
-        //    } else {Toast.makeText(this, "Le nombre de places minimum ne peut pas etre plus grand que le maximum!", Toast.LENGTH_LONG).show();}
-    //    } else {
-      //      Toast.makeText(this, "Il faut completer tous les champs!", Toast.LENGTH_LONG).show();
-            //Toast.makeText(this, Integer.parseInt(etat.getSelectedItem().toString()), Toast.LENGTH_LONG).show();
-        //    }
-
+        catch(NumberFormatException nfe)
+        {
+            return false;
+        }
+        return true;
     }
 
 

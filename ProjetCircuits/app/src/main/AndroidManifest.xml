@@ -26,7 +26,8 @@
         <activity android:name=".ListeJours" />
         <activity android:name=".AjouterJour" />
         <activity android:name=".SignIn" />
-        <activity android:name=".SignUp"></activity>
+        <activity android:name=".SignUp" />
+        <activity android:name=".ListeUtilisateurs"></activity>
     </application>
 
 </manifest>
